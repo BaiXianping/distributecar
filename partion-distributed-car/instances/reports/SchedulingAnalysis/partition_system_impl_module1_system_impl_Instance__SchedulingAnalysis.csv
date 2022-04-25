@@ -1,0 +1,19 @@
+Test scheduability Report
+
+Processor Utilization/Scheduling Results
+Warning! Proc: Processor module1_system_impl_Instance.Proc is not used and has no MIPS capacity
+ERROR:  cpu: Processor module1_system_impl_Instance.cpu has threads and is not schedulable because it has no MIPS capacity
+
+Thread binding report
+thread M_TT.T2_O_Servant(0.000 MIPS) ==> virtual processor cpu.TTSegment ==>  NOTHING
+thread M_TT.T2_I_Servant(0.000 MIPS) ==> virtual processor cpu.TTSegment ==>  NOTHING
+thread M_TT.T3_O_Servant(0.000 MIPS) ==> virtual processor cpu.TTSegment ==>  NOTHING
+thread M_TT.T3_I_Servant(0.000 MIPS) ==> virtual processor cpu.TTSegment ==>  NOTHING
+thread M_TT.T4_O_Servant(0.000 MIPS) ==> virtual processor cpu.TTSegment ==>  NOTHING
+thread M_TT.T4_I_Servant(0.000 MIPS) ==> virtual processor cpu.TTSegment ==>  NOTHING
+thread M_TT.T5_O_Servant(0.000 MIPS) ==> virtual processor cpu.TTSegment ==>  NOTHING
+thread M_TT.T5_I_Servant(0.000 MIPS) ==> virtual processor cpu.TTSegment ==>  NOTHING
+thread M_ET.T2_C_Servant(0.000 MIPS) ==> virtual processor cpu.ETSegment ==>  NOTHING
+thread M_ET.T3_C_Servant(0.000 MIPS) ==> virtual processor cpu.ETSegment ==>  NOTHING
+thread M_ET.T4_C_Servant(0.000 MIPS) ==> virtual processor cpu.ETSegment ==>  NOTHING
+thread M_ET.T5_C_Servant(0.000 MIPS) ==> virtual processor cpu.ETSegment ==>  NOTHING

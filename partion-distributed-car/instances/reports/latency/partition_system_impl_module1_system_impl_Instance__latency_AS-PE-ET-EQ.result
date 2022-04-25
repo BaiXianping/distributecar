@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="ASCII"?>
+<result:AnalysisResult xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:result="http://www.osate.org/result/Result" analysis="latency" message="AS-PE-ET-EQ">
+  <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#/"/>
+  <parameters value="ACED0005737200116A6176612E6C616E672E426F6F6C65616ECD207280D59CFAEE0200015A000576616C7565787001"/>
+  <parameters value="ACED0005737200116A6176612E6C616E672E426F6F6C65616ECD207280D59CFAEE0200015A000576616C7565787000"/>
+  <parameters value="ACED0005737200116A6176612E6C616E672E426F6F6C65616ECD207280D59CFAEE0200015A000576616C7565787000"/>
+  <parameters value="ACED0005737200116A6176612E6C616E672E426F6F6C65616ECD207280D59CFAEE0200015A000576616C7565787001"/>
+  <results message="Latency results for etef1" resultType="SUCCESS">
+    <values xsi:type="result:StringValue" value=""/>
+    <values xsi:type="result:RealValue" value="216.3"/>
+    <values xsi:type="result:RealValue" value="316.6"/>
+    <values xsi:type="result:RealValue" value="0.3"/>
+    <values xsi:type="result:RealValue" value="0.6"/>
+    <values xsi:type="result:RealValue"/>
+    <values xsi:type="result:RealValue" value="350.0"/>
+    <diagnostics diagnosticType="INFO" message="Minimum actual latency total 216.3ms is greater or equal to expected minimum end to end latency 0.000ms">
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@endToEndFlow.0"/>
+    </diagnostics>
+    <diagnostics diagnosticType="INFO" message="Maximum actual latency total 316.6ms is less or equal to expected maximum end to end latency 350.0ms">
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@endToEndFlow.0"/>
+    </diagnostics>
+    <diagnostics diagnosticType="INFO" message="Jitter of actual flow latency 216.3..316.6ms is within expected end to end latency jitter 0.000..350.0ms">
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@endToEndFlow.0"/>
+    </diagnostics>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="first sampling"/>
+      <values xsi:type="result:StringValue" value="first sampling"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.4"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="0.2"/>
+      <values xsi:type="result:RealValue" value="0.5"/>
+      <values xsi:type="result:RealValue" value="0.2"/>
+      <values xsi:type="result:RealValue" value="0.5"/>
+      <values xsi:type="result:StringValue" value="specified"/>
+      <values xsi:type="result:StringValue" value="specified"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.4"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.1"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue" value="100.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.12/@componentInstance.1"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="16.0"/>
+      <values xsi:type="result:RealValue" value="15.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <diagnostics diagnosticType="INFO" message="Output at 16.0ms partition end">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.17"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <diagnostics diagnosticType="INFO" message="Synchronous communication on same platform">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue" value="5.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.13/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="83.0"/>
+      <values xsi:type="result:RealValue" value="79.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <diagnostics diagnosticType="INFO" message="Output at 84.0ms partition end">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.26"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <diagnostics diagnosticType="INFO" message="Synchronous communication on same platform">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.12/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.12/@connectionInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.12/@componentInstance.5"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="16.0"/>
+      <values xsi:type="result:RealValue" value="14.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <diagnostics diagnosticType="INFO" message="Output at 16.0ms partition end">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.23"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <diagnostics diagnosticType="INFO" message="Synchronous communication on same platform">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue" value="5.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.13/@componentInstance.2"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="83.0"/>
+      <values xsi:type="result:RealValue" value="79.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <diagnostics diagnosticType="INFO" message="Output at 84.0ms partition end">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.28"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <diagnostics diagnosticType="INFO" message="Synchronous communication on same platform">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.12/@componentInstance.4"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="16.0"/>
+      <values xsi:type="result:RealValue" value="15.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <diagnostics diagnosticType="INFO" message="Output at 16.0ms partition end">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.19"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="0.1"/>
+      <values xsi:type="result:RealValue" value="0.1"/>
+      <values xsi:type="result:RealValue" value="0.1"/>
+      <values xsi:type="result:RealValue" value="0.1"/>
+      <values xsi:type="result:StringValue" value="specified"/>
+      <values xsi:type="result:StringValue" value="specified"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.7"/>
+    </subResults>
+    <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@endToEndFlow.0"/>
+  </results>
+  <results message="Latency results for etef2" resultType="FAILURE">
+    <values xsi:type="result:StringValue" value=""/>
+    <values xsi:type="result:RealValue" value="116.3"/>
+    <values xsi:type="result:RealValue" value="216.6"/>
+    <values xsi:type="result:RealValue" value="0.3"/>
+    <values xsi:type="result:RealValue" value="0.6"/>
+    <values xsi:type="result:RealValue"/>
+    <values xsi:type="result:RealValue" value="100.0"/>
+    <diagnostics diagnosticType="ERROR" message="Minimum actual latency total 116.3ms exceeds expected maximum end to end latency 100.0ms">
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@endToEndFlow.1"/>
+    </diagnostics>
+    <diagnostics diagnosticType="ERROR" message="Maximum actual latency total 216.6ms exceeds expected maximum end to end latency 100.0ms">
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@endToEndFlow.1"/>
+    </diagnostics>
+    <diagnostics diagnosticType="WARNING" message="Jitter of actual latency total 116.3..216.6ms exceeds expected end to end latency jitter 0.000..100.0ms">
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@endToEndFlow.1"/>
+    </diagnostics>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="first sampling"/>
+      <values xsi:type="result:StringValue" value="first sampling"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.6"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="0.2"/>
+      <values xsi:type="result:RealValue" value="0.5"/>
+      <values xsi:type="result:RealValue" value="0.2"/>
+      <values xsi:type="result:RealValue" value="0.5"/>
+      <values xsi:type="result:StringValue" value="specified"/>
+      <values xsi:type="result:StringValue" value="specified"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.6"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.6"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue" value="100.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.12/@componentInstance.5"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="16.0"/>
+      <values xsi:type="result:RealValue" value="15.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <diagnostics diagnosticType="INFO" message="Output at 16.0ms partition end">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.23"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <diagnostics diagnosticType="INFO" message="Synchronous communication on same platform">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue" value="5.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.13/@componentInstance.2"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="83.0"/>
+      <values xsi:type="result:RealValue" value="79.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <diagnostics diagnosticType="INFO" message="Output at 84.0ms partition end">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.1"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.28"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <values xsi:type="result:StringValue" value="partition offset"/>
+      <diagnostics diagnosticType="INFO" message="Synchronous communication on same platform">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue" value="1.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="processing time"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.12/@componentInstance.4"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="16.0"/>
+      <values xsi:type="result:RealValue" value="15.0"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <values xsi:type="result:StringValue" value="partition output (PE)"/>
+      <diagnostics diagnosticType="INFO" message="Output at 16.0ms partition end">
+        <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+      </diagnostics>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.14/@componentInstance.0"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:RealValue"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <values xsi:type="result:StringValue" value="no sampling/queuing latency"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@connectionInstance.19"/>
+    </subResults>
+    <subResults>
+      <values xsi:type="result:RealValue" value="0.1"/>
+      <values xsi:type="result:RealValue" value="0.1"/>
+      <values xsi:type="result:RealValue" value="0.1"/>
+      <values xsi:type="result:RealValue" value="0.1"/>
+      <values xsi:type="result:StringValue" value="specified"/>
+      <values xsi:type="result:StringValue" value="specified"/>
+      <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@componentInstance.7"/>
+    </subResults>
+    <modelElement href="../../partition_system_impl_module1_system_impl_Instance.aaxl2#//@endToEndFlow.1"/>
+  </results>
+</result:AnalysisResult>

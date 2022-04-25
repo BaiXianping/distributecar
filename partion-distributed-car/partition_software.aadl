@@ -1,0 +1,769 @@
+package partition_software
+public
+	with ARINC653;
+
+--	with Types;
+--	with Base_Types;
+	data integer
+	end integer;
+
+	data ordercmd
+	end ordercmd;
+
+	data protected_data
+		properties
+			Concurrency_Control_Protocol => Protected_Access;
+	end protected_data;
+
+	subprogram sensor_temperature_spg
+	end sensor_temperature_spg;
+
+	subprogram sensor_receiveinput_spg
+	end sensor_receiveinput_spg;
+
+	subprogram commandboard_receiveinput_spg
+	end commandboard_receiveinput_spg;
+
+	subprogram commandboard_printinfos_spg
+	end commandboard_printinfos_spg;
+
+	---------------------------------------------------------------------------------------------------------------
+	---------------------------------- Master I/C/O thread(Servant) -----------------------------------------------
+	---------------------------------------------------------------------------------------------------------------
+	-- @Task2 : O
+	thread M_sensor_controlHandle_thread_O2
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (1);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end M_sensor_controlHandle_thread_O2;
+
+	-- @Task2 : I
+	thread M_sensor_controlHandle_thread_I2
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (2);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end M_sensor_controlHandle_thread_I2;
+
+	-- @Task2 : C
+	thread M_sensor_controlHandle_thread2
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 2;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end M_sensor_controlHandle_thread2;
+
+	-- @Task3 : O
+	thread M_receivefrom_slave_thread_O3
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (3);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end M_receivefrom_slave_thread_O3;
+
+	-- @Task3 : I
+	thread M_receivefrom_slave_thread_I3
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (4);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end M_receivefrom_slave_thread_I3;
+
+	-- @Task3 : C
+	thread M_receivefrom_slave_thread3
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 3;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end M_receivefrom_slave_thread3;
+
+	-- @Task4 : O
+	thread M_control_move_thread_O4
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (7);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end M_control_move_thread_O4;
+
+	-- @Task4 : I
+	thread M_control_move_thread_I4
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (8);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end M_control_move_thread_I4;
+
+	-- @Task4 : C
+	thread M_control_move_thread4
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 5;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end M_control_move_thread4;
+
+	-- @Task5 : O
+	thread M_sendto_slave_thread_O5
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (9);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end M_sendto_slave_thread_O5;
+
+	-- @Task5 : I
+	thread M_sendto_slave_thread_I5
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (10);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end M_sendto_slave_thread_I5;
+
+	-- @Task5 : C
+	thread M_sendto_slave_thread5
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 6;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end M_sendto_slave_thread5;
+
+-----------------------
+--thread M_sensor_controlHandle_thread_O2
+--thread M_sensor_controlHandle_thread_I2
+--thread M_sensor_controlHandle_thread2
+--thread M_receivefrom_slave_thread_O3
+--thread M_receivefrom_slave_thread_I3
+--thread M_receivefrom_slave_thread3
+--thread M_control_move_thread_O4
+--thread M_control_move_thread_I4
+--thread M_control_move_thread4
+--thread M_sendto_slave_thread_O5
+--thread M_sendto_slave_thread_I5
+--thread M_sendto_slave_thread5
+-----------------------
+	---------------------------------------------------------------------------------------------------------------
+	---------------------------------- Master TT Segment Process(I/O) ---------------------------------------------
+	---------------------------------------------------------------------------------------------------------------
+	-- @class
+	process M_TTcodeseg
+		features
+			PS2Port: in data port integer;
+			Rate_1: out data port integer;
+			Rate_2: out data port integer;
+			Rate_3: out data port integer;
+			Rate_4: out data port integer;
+
+			imuPort: in event data port integer;
+			Receiverport: in event data port integer;
+			Senderport: out event data port integer;
+
+			t2_i2c: out event data port integer;
+			t2_c2o: in event data port integer;
+			t3_i2c: out event data port integer;
+			t3_c2o: in event data port integer;
+			t4_i2c: out event data port integer;
+			t4_c2o: in event data port integer;
+			t5_i2c: out event data port integer;
+			t5_c2o: in event data port integer;
+
+		flows
+			fp1: flow path PS2Port -> t2_i2c;
+			fp2: flow path imuPort -> t4_i2c;
+			fp3: flow path imuPort -> t5_i2c;
+			fp4: flow path Receiverport -> t3_i2c;
+			fp5: flow path t2_c2o -> t4_i2c;
+			fp6: flow path t3_c2o -> t4_i2c;
+			fp7: flow path t4_c2o -> Rate_1;
+			fp8: flow path t5_c2o -> Senderport;
+
+	end M_TTcodeseg;
+
+	-- @implementation
+	process implementation M_TTcodeseg.impl
+		subcomponents
+			T2_O_Servant: thread M_sensor_controlHandle_thread_O2;
+			T2_I_Servant: thread M_sensor_controlHandle_thread_I2;
+			--		T2_C_Servant		 :	thread M_sensor_controlHandle_thread2;
+			T3_O_Servant: thread M_receivefrom_slave_thread_O3;
+			T3_I_Servant: thread M_receivefrom_slave_thread_I3;
+			--		T3_C_Servant		 :	thread M_receivefrom_slave_thread3;
+			T4_O_Servant: thread M_control_move_thread_O4;
+			T4_I_Servant: thread M_control_move_thread_I4;
+			--		T4_C_Servant		 :	thread M_control_move_thread4;
+			T5_O_Servant: thread M_sendto_slave_thread_O5;
+			T5_I_Servant: thread M_sendto_slave_thread_I5;
+		--		T5_C_Servant		 :	thread M_sendto_slave_thread5;
+		connections
+			C1: port PS2Port -> T2_I_Servant.i;
+			C2: port T2_I_Servant.o -> t2_i2c;
+			C3: port t2_c2o -> T2_O_Servant.i;
+			C4: port T2_O_Servant.o -> T4_I_Servant.i;
+			C5: port Receiverport -> T3_I_Servant.i;
+			C6: port T3_I_Servant.o -> t3_i2c;
+			C7: port t3_c2o -> T3_O_Servant.i;
+			C8: port T3_O_Servant.o -> T4_I_Servant.i;
+			C9: port imuport -> T4_I_Servant.i;
+			C10: port T4_I_Servant.o -> t4_i2c;
+			C11: port t4_c2o -> T4_O_Servant.i;
+			C12: port T4_O_Servant.o -> Rate_1;
+			C13: port T4_O_Servant.o -> Rate_2;
+			C14: port T4_O_Servant.o -> Rate_3;
+			C15: port T4_O_Servant.o -> Rate_4;
+			C16: port imuport -> T5_I_Servant.i;
+			C17: port T5_I_Servant.o -> t5_i2c;
+			C18: port t5_c2o -> T5_O_Servant.i;
+			C19: port T5_O_Servant.o -> Senderport;
+		flows
+
+			fp2: flow path imuPort -> C9 -> T4_I_Servant.fs1 -> C10 -> t4_i2c;
+			fp3: flow path imuPort -> C16 -> T5_I_Servant.fs1 -> C17 -> t5_i2c;
+			fp4: flow path Receiverport -> C5 -> T3_I_Servant.fs1 -> C6 -> t3_i2c;
+			fp5: flow path t2_c2o -> C3 -> T2_O_Servant.fs1 -> C4 -> T4_I_Servant.fs1 -> C10 -> t4_i2c;
+			fp6: flow path t3_c2o -> C7 -> T3_O_Servant.fs1 -> C8 -> T4_I_Servant.fs1 -> C10 -> t4_i2c;
+			fp7: flow path t4_c2o -> C11 -> T4_O_Servant.fs1 -> C12 -> Rate_1;
+			fp8: flow path t5_c2o -> C18 -> T5_O_Servant.fs1 -> C19 -> Senderport;
+			fp1: flow path PS2Port -> C1 -> T2_I_Servant.fs1 -> C2 -> t2_i2c;
+	end M_TTcodeseg.impl;
+
+	---------------------------------------------------------------------------------------------------------------
+	---------------------------------- Master ET Segment Process(C) -----------------------------------------------
+	---------------------------------------------------------------------------------------------------------------
+	-- @class
+	process M_ETcodeseg
+		features
+			t2_i2c: in event data port integer;
+			t2_c2o: out event data port integer; -- T2_C to T2_O 
+			t3_i2c: in event data port integer;
+			t3_c2o: out event data port integer;
+			t4_i2c: in event data port integer;
+			t4_c2o: out event data port integer;
+			t5_i2c: in event data port integer;
+			t5_c2o: out event data port integer;
+
+		flows
+			fp1: flow path t2_i2c -> t2_c2o;
+			fp2: flow path t3_i2c -> t3_c2o;
+			fp3: flow path t4_i2c -> t4_c2o;
+			fp4: flow path t5_i2c -> t5_c2o;
+	end M_ETcodeseg;
+
+	-- @implementation
+	process implementation M_ETcodeseg.impl
+		subcomponents
+			T2_C_Servant: thread M_sensor_controlHandle_thread2;
+			T3_C_Servant: thread M_receivefrom_slave_thread3;
+			T4_C_Servant: thread M_control_move_thread4;
+			T5_C_Servant: thread M_sendto_slave_thread5;
+		connections
+			C1: port t2_i2c -> T2_C_Servant.i;
+			C2: port T2_C_Servant.o -> t2_c2o;
+			C3: port t3_i2c -> T3_C_Servant.i;
+			C4: port T3_C_Servant.o -> t3_c2o;
+			C5: port t4_i2c -> T4_C_Servant.i;
+			C6: port T4_C_Servant.o -> t4_c2o;
+			C7: port t5_i2c -> T5_C_Servant.i;
+			C8: port T5_C_Servant.o -> t5_c2o;
+
+		flows
+			fp1: flow path t2_i2c -> C1 -> T2_C_Servant.fs1 -> C2 -> t2_c2o;
+			fp2: flow path t3_i2c -> C3 -> T3_C_Servant.fs1 -> C4 -> t3_c2o;
+			fp3: flow path t4_i2c -> C5 -> T4_C_Servant.fs1 -> C6 -> t4_c2o;
+			fp4: flow path t5_i2c -> C7 -> T5_C_Servant.fs1 -> C8 -> t5_c2o;
+	end M_ETcodeseg.impl;
+
+	---------------------------------------------------------------------------------------------------------------
+	---------------------------------- Slave I/C/O thread(Servant) ------------------------------------------------
+	---------------------------------------------------------------------------------------------------------------
+	-- @Task1 : O
+	thread sensor_distance_thread_O1
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+			alarmport: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+			fs2: flow source alarmport {latency => 200us .. 500us;};
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (1);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end sensor_distance_thread_O1;
+
+	-- @Task1 : I
+	thread sensor_distance_thread_I1
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (2);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end sensor_distance_thread_I1;
+
+	-- @Task1 : C
+	thread sensor_distance_thread1
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 2;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end sensor_distance_thread1;
+
+	-- @Task2 : O
+	thread receivefrom_master_thread_O2
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (3);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end receivefrom_master_thread_O2;
+
+	-- @Task2 : I
+	thread receivefrom_master_thread_I2
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (4);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end receivefrom_master_thread_I2;
+
+	-- @Task2 : C
+	thread receivefrom_master_thread2
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 3;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end receivefrom_master_thread2;
+
+	-- @Task3 : O
+	thread sensor_imu_thread_O3
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (5);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end sensor_imu_thread_O3;
+
+	-- @Task3 : I
+	thread sensor_imu_thread_I3
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (6);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end sensor_imu_thread_I3;
+
+	-- @Task3 : C
+	thread sensor_imu_thread3
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 4;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end sensor_imu_thread3;
+
+	-- @Task4 : O
+	thread control_move_thread_O4
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (7);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end control_move_thread_O4;
+
+	-- @Task4 : I
+	thread control_move_thread_I4
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (8);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end control_move_thread_I4;
+
+	-- @Task4 : C
+	thread control_move_thread4
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 5;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end control_move_thread4;
+
+	-- @Task5 : O
+	thread sendto_master_thread_O5
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (9);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end sendto_master_thread_O5;
+
+	-- @Task5 : I
+	thread sendto_master_thread_I5
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Dispatch_Protocol => Periodic;
+			Priority => 1;
+			Time_Slot => (10);
+			Compute_Execution_Time => 0ms .. 1ms;
+			Period => 100ms;
+			ARINC653::Time_Capacity => 1ms;
+	end sendto_master_thread_I5;
+
+	-- @Task5 : C
+	thread sendto_master_thread5
+		features
+			i: in event data port integer;
+			o: out event data port integer;
+		flows
+			fs1: flow path i -> o;
+		properties
+			Priority => 6;
+			Dispatch_Protocol => Periodic;
+			Period => 100ms;
+			Compute_Execution_Time => 1ms .. 5ms;
+			ARINC653::Time_Capacity => 5ms;
+	end sendto_master_thread5;
+
+------------------------------------
+--thread sensor_distance_thread_O1
+--thread sensor_distance_thread_I1
+--thread sensor_distance_thread1
+--thread receivefrom_master_thread_O2
+--thread receivefrom_master_thread_I2
+--thread receivefrom_master_thread2
+--thread sensor_imu_thread_O3
+--thread sensor_imu_thread_I3
+--thread sensor_imu_thread3
+--thread control_move_thread_O4
+--thread control_move_thread_I4
+--thread control_move_thread4
+--thread sendto_master_thread_O5
+--thread sendto_master_thread_I5
+--thread sendto_master_thread5
+------------------------------------
+	---------------------------------------------------------------------------------------------------------------
+	---------------------------------- Slave TT Segment Process(I/O) ---------------------------------------------
+	---------------------------------------------------------------------------------------------------------------
+	-- @class
+	process S_TTcodeseg
+		features
+			Rate_1: out data port integer;
+			Rate_2: out data port integer;
+			Rate_3: out data port integer;
+			Rate_4: out data port integer;
+
+			ADC_DistancePort: in event data port integer;
+			imuPort: in event data port integer;
+			Receiverport: in event data port integer;
+			Senderport: out event data port integer;
+
+			t1_i2c: out event data port integer;
+			t1_c2o: in event data port integer;
+			t2_i2c: out event data port integer;
+			t2_c2o: in event data port integer;
+--		t3_i2c				: out event data port integer;
+--		t3_c2o				: in event data port integer;
+			t4_i2c: out event data port integer;
+			t4_c2o: in event data port integer;
+			t5_i2c: out event data port integer;
+			t5_c2o: in event data port integer;
+
+		flows
+			fp1: flow path ADC_DistancePort -> t1_i2c;
+			fp2: flow path imuPort -> t4_i2c;
+--	    fp3 	: flow path imuPort -> t3_i2c;
+			fp4: flow path Receiverport -> t2_i2c;
+			fp5: flow path t1_c2o -> t4_i2c;
+			fp6: flow path t1_c2o -> t5_i2c;
+--	    fp7 	: flow path t3_c2o -> t4_i2c;
+			fp8: flow path t4_c2o -> Rate_1;
+			fp9: flow path t5_c2o -> Senderport;
+--	    fp10	: flow path t2_c2o -> t3_i2c;
+--	    fp11	: flow path 
+	end S_TTcodeseg;
+
+	-- @implementation
+	process implementation S_TTcodeseg.impl
+		subcomponents
+			T1_O_Servant: thread sensor_distance_thread_O1;
+			T1_I_Servant: thread sensor_distance_thread_I1;
+			T2_O_Servant: thread receivefrom_master_thread_O2;
+			T2_I_Servant: thread receivefrom_master_thread_I2;
+--			T3_O_Servant				:	thread sensor_imu_thread_O3;
+--			T3_I_Servant				:	thread sensor_imu_thread_I3;
+			T4_O_Servant: thread control_move_thread_O4;
+			T4_I_Servant: thread control_move_thread_I4;
+			T5_O_Servant: thread sendto_master_thread_O5;
+			T5_I_Servant: thread sendto_master_thread_I5;
+
+		connections
+			C1: port ADC_DistancePort -> T1_I_Servant.i;
+			C2: port T1_I_Servant.o -> t1_i2c;
+			C3: port t1_c2o -> T1_O_Servant.i;
+			C4: port T1_O_Servant.o -> T4_I_Servant.i;
+			C5: port T1_O_Servant.o -> T5_I_Servant.i;
+			C6: port Receiverport -> T2_I_Servant.i;
+			C7: port T2_I_Servant.o -> t2_i2c;
+			C8: port t2_c2o -> T2_O_Servant.i;
+--			C9 		: port T2_O_Servant.o -> T3_I_Servant.i;
+			C10: port T2_O_Servant.o -> T4_I_Servant.i;
+--			C11		: port imuPort -> T3_I_Servant.i;
+--			C12		: port T3_I_Servant.o -> t3_i2c;
+--			C13 	: port t3_c2o -> T3_O_Servant.i;
+--			C14		: port T3_O_Servant.o -> T4_I_Servant.i;
+			C15: port imuPort -> T4_I_Servant.i;
+			C16: port T4_I_Servant.o -> t4_i2c;
+			C17: port t4_c2o -> T4_O_Servant.i;
+			C18: port T4_O_Servant.o -> Rate_1;
+			C19: port T4_O_Servant.o -> Rate_2;
+			C20: port T4_O_Servant.o -> Rate_3;
+			C21: port T4_O_Servant.o -> Rate_4;
+			C22: port T5_I_Servant.o -> t5_i2c;
+			C23: port t5_c2o -> T5_O_Servant.i;
+			C24: port T5_O_Servant.o -> Senderport;
+
+		flows
+			fp1: flow path ADC_DistancePort -> C1 -> T1_I_Servant.fs1 -> C2 -> t1_i2c;
+			fp2: flow path imuPort -> C15 -> T4_I_Servant.fs1 -> C16 -> t4_i2c;
+--		    fp3 	: flow path imuPort -> C11 -> T3_I_Servant.fs1 -> C12 -> t3_i2c;
+			fp4: flow path Receiverport -> C6 -> T2_I_Servant.fs1 -> C7 -> t2_i2c;
+			fp5: flow path t1_c2o -> C3 -> T1_O_Servant.fs1 -> C4 -> T4_I_Servant.fs1 -> C16 -> t4_i2c;
+			fp6: flow path t1_c2o -> C3 -> T1_O_Servant.fs1 -> C5 -> T5_I_Servant.fs1 -> C22 -> t5_i2c;
+--		    fp7 	: flow path t3_c2o -> C13 -> T3_O_Servant.fs1 -> C14 -> T4_I_Servant.fs1 -> C16 -> t4_i2c;
+			fp8: flow path t4_c2o -> C17 -> T4_O_Servant.fs1 -> C18 -> Rate_1;
+			fp9: flow path t5_c2o -> C23 -> T5_O_Servant.fs1 -> C24 -> Senderport;
+--		    fp10	: flow path t2_c2o -> C8 -> T2_O_Servant.fs1 -> C9 -> T3_I_Servant.fs1 -> C12 -> t3_i2c; 				
+	end S_TTcodeseg.impl;
+
+	---------------------------------------------------------------------------------------------------------------
+	---------------------------------- Slave ET Segment Process(C) ------------------------------------------------
+	---------------------------------------------------------------------------------------------------------------
+	-- @class
+	process S_ETcodeseg
+		features
+			t1_i2c: in event data port integer;
+			t1_c2o: out event data port integer;
+			t2_i2c: in event data port integer;
+			t2_c2o: out event data port integer;
+--	    t3_i2c	: in event data port integer;
+--	    t3_c2o	: out event data port integer;
+			t4_i2c: in event data port integer;
+			t4_c2o: out event data port integer;
+			t5_i2c: in event data port integer;
+			t5_c2o: out event data port integer;
+
+		flows
+			fp1: flow path t1_i2c -> t1_c2o;
+			fp2: flow path t2_i2c -> t2_c2o;
+--	    fp3 	: flow path t3_i2c -> t3_c2o;
+			fp4: flow path t4_i2c -> t4_c2o;
+			fp5: flow path t5_i2c -> t5_c2o;
+	end S_ETcodeseg;
+
+	-- @implementation
+	process implementation S_ETcodeseg.impl
+		subcomponents
+			T1_C_Servant: thread sensor_distance_thread1;
+			T2_C_Servant: thread receivefrom_master_thread2;
+
+			T4_C_Servant: thread control_move_thread4;
+			T5_C_Servant: thread sendto_master_thread5;
+		connections
+			C1: port t1_i2c -> T1_C_Servant.i;
+			C2: port T1_C_Servant.o -> t1_c2o;
+			C3: port t2_i2c -> T2_C_Servant.i;
+			C4: port T2_C_Servant.o -> t2_c2o;
+--			C5		: port t3_i2c -> T3_C_Servant.i;
+--			C6		: port T3_C_Servant.o -> t3_c2o;
+			C7: port t4_i2c -> T4_C_Servant.i;
+			C8: port T4_C_Servant.o -> t4_c2o;
+			C9: port t5_i2c -> T5_C_Servant.i;
+			C10: port T5_C_Servant.o -> t5_c2o;
+
+		flows
+			fp1: flow path t1_i2c -> C1 -> T1_C_Servant.fs1 -> C2 -> t1_c2o;
+			fp2: flow path t2_i2c -> C3 -> T2_C_Servant.fs1 -> C4 -> t2_c2o;
+--		    fp3 : flow path t3_i2c -> C5 -> T3_C_Servant.fs1 -> C6 -> t3_c2o;
+			fp4: flow path t4_i2c -> C7 -> T4_C_Servant.fs1 -> C8 -> t4_c2o;
+			fp5: flow path t5_i2c -> C9 -> T5_C_Servant.fs1 -> C10 -> t5_c2o;
+	end S_ETcodeseg.impl;
+
+end partition_software;

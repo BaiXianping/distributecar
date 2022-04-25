@@ -1,0 +1,68 @@
+Latency analysis with preference settings: asynchronous system/partition end/worst case as max compute execution time/best case as empty queue
+
+Latency results for end-to-end flow 'etef1' of system 'module1_system.impl'
+
+Result,Min Specified,Min Actual,Min Method,Max Specified,Max Actual,Max Method,Comments
+device Handle,0.0ms,0.0ms,first sampling,0.0ms,0.0ms,first sampling
+device Handle,0.2ms,0.2ms,specified,0.5ms,0.5ms,specified
+connection Handle.DOF6 -> M_TT.T2_I_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+partition cpu.TTSegment,0.0ms,0.0ms,partition offset,0.0ms,100.0ms,partition offset
+thread M_TT.T2_I_Servant,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,1.0ms,processing time
+partition cpu.TTSegment,0.0ms,16.0ms,partition output (PE),0.0ms,15.0ms,partition output (PE),Output at 16.0ms partition end
+connection M_TT.T2_I_Servant.o -> M_ET.T2_C_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+partition cpu.ETSegment,0.0ms,0.0ms,partition offset,0.0ms,0.0ms,partition offset,Synchronous communication on same platform
+thread M_ET.T2_C_Servant,0.0ms,1.0ms,processing time,0.0ms,5.0ms,processing time
+partition cpu.ETSegment,0.0ms,83.0ms,partition output (PE),0.0ms,79.0ms,partition output (PE),Output at 84.0ms partition end
+connection M_ET.T2_C_Servant.o -> M_TT.T2_O_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+partition cpu.TTSegment,0.0ms,0.0ms,partition offset,0.0ms,0.0ms,partition offset,Synchronous communication on same platform
+thread M_TT.T2_O_Servant,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,1.0ms,processing time
+connection T2_O_Servant.o -> T4_I_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+thread M_TT.T4_I_Servant,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,1.0ms,processing time
+partition cpu.TTSegment,0.0ms,16.0ms,partition output (PE),0.0ms,14.0ms,partition output (PE),Output at 16.0ms partition end
+connection M_TT.T4_I_Servant.o -> M_ET.T4_C_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+partition cpu.ETSegment,0.0ms,0.0ms,partition offset,0.0ms,0.0ms,partition offset,Synchronous communication on same platform
+thread M_ET.T4_C_Servant,0.0ms,1.0ms,processing time,0.0ms,5.0ms,processing time
+partition cpu.ETSegment,0.0ms,83.0ms,partition output (PE),0.0ms,79.0ms,partition output (PE),Output at 84.0ms partition end
+connection M_ET.T4_C_Servant.o -> M_TT.T4_O_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+partition cpu.TTSegment,0.0ms,0.0ms,partition offset,0.0ms,0.0ms,partition offset,Synchronous communication on same platform
+thread M_TT.T4_O_Servant,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,1.0ms,processing time
+partition cpu.TTSegment,0.0ms,16.0ms,partition output (PE),0.0ms,15.0ms,partition output (PE),Output at 16.0ms partition end
+connection M_TT.T4_O_Servant.o -> M1.rate,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+device M1,0.1ms,0.1ms,specified,0.1ms,0.1ms,specified
+Latency Total,0.3ms,216.3ms,,0.6ms,316.6ms
+Specified End To End Latency,,0.0ms,,,350.0ms
+End to end Latency Summary
+INFO,Minimum actual latency total 216.3ms is greater or equal to expected minimum end to end latency 0.000ms
+INFO,Maximum actual latency total 316.6ms is less or equal to expected maximum end to end latency 350.0ms
+INFO,Jitter of actual flow latency 216.3..316.6ms is within expected end to end latency jitter 0.000..350.0ms
+
+
+
+Latency results for end-to-end flow 'etef2' of system 'module1_system.impl'
+
+Result,Min Specified,Min Actual,Min Method,Max Specified,Max Actual,Max Method,Comments
+device IMU,0.0ms,0.0ms,first sampling,0.0ms,0.0ms,first sampling
+device IMU,0.2ms,0.2ms,specified,0.5ms,0.5ms,specified
+connection IMU.DOF6 -> M_TT.T4_I_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+partition cpu.TTSegment,0.0ms,0.0ms,partition offset,0.0ms,100.0ms,partition offset
+thread M_TT.T4_I_Servant,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,1.0ms,processing time
+partition cpu.TTSegment,0.0ms,16.0ms,partition output (PE),0.0ms,15.0ms,partition output (PE),Output at 16.0ms partition end
+connection M_TT.T4_I_Servant.o -> M_ET.T4_C_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+partition cpu.ETSegment,0.0ms,0.0ms,partition offset,0.0ms,0.0ms,partition offset,Synchronous communication on same platform
+thread M_ET.T4_C_Servant,0.0ms,1.0ms,processing time,0.0ms,5.0ms,processing time
+partition cpu.ETSegment,0.0ms,83.0ms,partition output (PE),0.0ms,79.0ms,partition output (PE),Output at 84.0ms partition end
+connection M_ET.T4_C_Servant.o -> M_TT.T4_O_Servant.i,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+partition cpu.TTSegment,0.0ms,0.0ms,partition offset,0.0ms,0.0ms,partition offset,Synchronous communication on same platform
+thread M_TT.T4_O_Servant,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,1.0ms,processing time
+partition cpu.TTSegment,0.0ms,16.0ms,partition output (PE),0.0ms,15.0ms,partition output (PE),Output at 16.0ms partition end
+connection M_TT.T4_O_Servant.o -> M1.rate,0.0ms,0.0ms,no sampling/queuing latency,0.0ms,0.0ms,no sampling/queuing latency
+device M1,0.1ms,0.1ms,specified,0.1ms,0.1ms,specified
+Latency Total,0.3ms,116.3ms,,0.6ms,216.6ms
+Specified End To End Latency,,0.0ms,,,100.0ms
+End to end Latency Summary
+ERROR,Minimum actual latency total 116.3ms exceeds expected maximum end to end latency 100.0ms
+ERROR,Maximum actual latency total 216.6ms exceeds expected maximum end to end latency 100.0ms
+WARNING,Jitter of actual latency total 116.3..216.6ms exceeds expected end to end latency jitter 0.000..100.0ms
+
+
+

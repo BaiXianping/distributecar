@@ -1,0 +1,43 @@
+Bound Resource Budget Analysis Report
+
+
+Processor Summary Report: 
+** Processor Proc has no MIPS capacity but has bound components.
+*   Processor Proc: Bound app's have no MIPS budget.
+** Processor cpu has no MIPS capacity but has bound components.
+*   Processor cpu: Bound app's have no MIPS budget.
+
+Virtual Processor Summary Report: 
+* Virtual processor Proc.TTSegment has no MIPS capacity or budget.
+* Virtual processor Proc.ETSegment has no MIPS capacity or budget.
+* Virtual processor cpu.TTSegment has no MIPS capacity or budget.
+* Virtual processor cpu.ETSegment has no MIPS capacity or budget.
+
+Memory Summary Report: 
+  No Memory with Memory_Size or RAMCapacity or ROMCapacity
+
+
+Detailed Workload Report:  for Processor Proc with Capacity 0.000 MIPS
+
+Component,Budget,Actual
+Total,,0.000 MIPS
+
+
+Detailed Workload Report:  for Processor cpu with Capacity 0.000 MIPS
+
+Component,Budget,Actual
+  thread M_TT.T2_O_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_TT.T2_I_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_TT.T3_O_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_TT.T3_I_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_TT.T4_O_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_TT.T4_I_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_TT.T5_O_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_TT.T5_I_Servant,   0.000 MIPS,  0.000 MIPS,
+process M_TT, 0.000 MIPS,0.000 MIPS,
+  thread M_ET.T2_C_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_ET.T3_C_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_ET.T4_C_Servant,   0.000 MIPS,  0.000 MIPS,
+  thread M_ET.T5_C_Servant,   0.000 MIPS,  0.000 MIPS,
+process M_ET, 0.000 MIPS,0.000 MIPS,
+Total,,0.000 MIPS

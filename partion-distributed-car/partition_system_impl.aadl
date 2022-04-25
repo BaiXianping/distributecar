@@ -1,0 +1,107 @@
+package partition_system_impl
+public
+	with partition_hardware;
+	with partition_software;
+	
+system module1_system extends partition_hardware::mastercarsystem
+--	flows
+--		f3 : flow path IMU.f1 -> M_SR.f2;
+--		f4 : flow path M_SR.f1 -> M1.f1; 
+end module1_system;
+
+system implementation module1_system.impl extends partition_hardware::mastercarsystem.impl
+	subcomponents
+		cpu: processor partition_hardware::arinckernel.module1;
+		M_TT: Process partition_software::M_TTcodeseg.impl;
+		M_ET: Process partition_software::M_ETcodeseg.impl;
+	connections
+		C12: port Handle.DOF6 <-> M_TT.PS2Port;
+		C13  : port IMU.DOF6 -> M_TT.imuPort;
+		C14  : port M_TT.Rate_1 -> M1.rate;
+		C15  : port M_TT.Rate_2 -> M2.rate;
+		C16  : port M_TT.Rate_3 -> M3.rate;
+		C17  : port M_TT.Rate_4 -> M4.rate;
+		C18	 : port M_TT.Senderport -> M_SR.DOF;
+		C19  : port M_SR.DOF6 -> M_TT.Receiverport;
+		C20  : port M_TT.t2_i2c -> M_ET.t2_i2c;
+		C21  : port M_TT.t3_i2c -> M_ET.t3_i2c;
+		C22  : port M_TT.t4_i2c -> M_ET.t4_i2c;
+		C23  : port M_TT.t5_i2c -> M_ET.t5_i2c;
+		C24  : port M_ET.t2_c2o -> M_TT.t2_c2o;
+		C25  : port M_ET.t3_c2o -> M_TT.t3_c2o;
+		C26  : port M_ET.t4_c2o -> M_TT.t4_c2o;
+		C27  : port M_ET.t5_c2o -> M_TT.t5_c2o;
+		C28	 : port M_SR.t -> MT;
+		C29  : port MR -> M_SR.r;
+	flows-- 分层 加端口
+--		f3 : flow path IMU.f1 -> C13 -> M_TT.fp3 -> C23 -> M_ET.fp4 -> C27 -> M_TT.fp8 -> C18 -> M_SR.f2 -> C28 -> MT;
+--		f4 : flow  path MR -> C29 -> M_SR.f1 -> C19 -> M_TT.fp4 -> C21 -> M_ET.fp2 -> C25 -> M_TT.fp6 -> C22 -> M_ET.fp3 -> C26 -> M_TT.fp7 -> C14 -> M1.f1;
+		etef1 : end to end flow Handle.f1 -> C12 -> M_TT.fp1 -> C20 -> M_ET.fp1 -> C24 -> M_TT.fp5 -> C22 -> M_ET.fp3 -> C26 -> M_TT.fp7 -> C14 -> M1.f1 { latency => 0 ms .. 350 ms;}; -- 看看需不需要重新修改latency
+		etef2 : end to end flow IMU.f1 -> C13 -> M_TT.fp2 -> C22 -> M_ET.fp3 -> C26 -> M_TT.fp7 -> C14 -> M1.f1 { latency => 0 ms .. 100 ms;};
+	properties		
+		Actual_Processor_Binding => (reference (cpu.TTSegment)) applies to M_TT;
+		Actual_Processor_Binding => (reference (cpu.ETSegment)) applies to M_ET;
+end module1_system.impl;
+
+system module2_system extends partition_hardware::slavecarsystem
+end module2_system;
+
+---@@@@ Master and Slave 之间的Tisch还没有建立数据连接，在建立flow的时候需要用到
+
+system implementation module2_system.impl extends partition_hardware::slavecarsystem.impl
+	subcomponents
+		cpu: processor partition_hardware::arinckernel.module2;
+		S_TT: Process partition_software::S_TTcodeseg.impl;
+		S_ET: Process partition_software::S_ETcodeseg.impl;
+	connections
+		C10	 : port DistanceSensor.DOF6 -> S_TT.ADC_DistancePort;
+		C11  : port IMU.DOF6 -> S_TT.imuPort;
+		C12  : port S_TT.Rate_1 -> M1.rate;
+		C13  : port S_TT.Rate_2 -> M2.rate;
+		C14  : port S_TT.Rate_3 -> M3.rate;
+		C15  : port S_TT.Rate_4 -> M4.rate;
+		C16	 : port S_TT.Senderport -> S_SR.DOF;
+		C17  : port S_SR.DOF6 -> S_TT.Receiverport;
+		C18  : port S_TT.t1_i2c -> S_ET.t1_i2c;
+		C19  : port S_TT.t2_i2c -> S_ET.t2_i2c;
+--		C20  : port S_TT.t3_i2c -> S_ET.t3_i2c;
+		C21  : port S_TT.t4_i2c -> S_ET.t4_i2c;
+		C22  : port S_TT.t5_i2c -> S_ET.t5_i2c;
+		C23  : port S_ET.t1_c2o -> S_TT.t1_c2o;		
+		C24  : port S_ET.t2_c2o -> S_TT.t2_c2o;
+--		C25  : port S_ET.t3_c2o -> S_TT.t3_c2o;
+		C26  : port S_ET.t4_c2o -> S_TT.t4_c2o;
+		C27  : port S_ET.t5_c2o -> S_TT.t5_c2o;
+		C28	 : port S_SR.t -> ST;
+		C29  : port SR -> S_SR.r;
+	flows
+		etef1 : end to end flow DistanceSensor.f1 -> C10 -> S_TT.fp1 -> C18 -> S_ET.fp1 -> C23 -> S_TT.fp5 -> C21 -> S_ET.fp4 -> C26 -> S_TT.fp8 -> C12 -> M1.f1{ latency => 0 ms .. 250 ms;};
+		etef2 : end to end flow IMU.f1 -> C11 -> S_TT.fp2 -> C21 -> S_ET.fp4 -> C26 -> S_TT.fp8 -> C12 -> M1.f1 { latency => 0 ms .. 100 ms;};
+--		etef3 : end to end flow IMU.f1 -> C11 -> S_TT.fp3 -> C20 -> S_ET.fp3 -> C25 -> S_TT.fp7 -> C21 -> S_ET.fp4 -> C26 -> S_TT.fp8 -> C12 -> M1.f1 { latency => 0 ms .. 700 ms;};
+--		f4 : flow path SR -> C29 -> S_SR.f1 -> C17 -> S_TT.fp4 -> C19 -> S_ET.fp2 -> C24 -> S_TT.fp10 -> C20 -> S_ET.fp3 -> C25 -> S_TT.fp7 -> C21 ->S_ET.fp4 -> C26 -> S_TT.fp8 -> C12 -> M1.f1 { latency => 0 ms .. 2 ms;};
+--		f5 : flow path S_TT.fp6 -> C22 -> S_ET.fp5 -> C27 -> S_TT.fp9 -> C16 -> S_SR.f2 -> C28 -> ST { latency => 0 ms .. 2 ms;};
+	properties
+		Actual_Processor_Binding => (reference (cpu.TTSegment)) applies to S_TT;
+		Actual_Processor_Binding => (reference (cpu.ETSegment)) applies to S_ET;
+end module2_system.impl;
+
+system Dcarsystem extends partition_hardware::distributedcarsystem
+end Dcarsystem;
+
+system implementation Dcarsystem.impl extends partition_hardware::distributedcarsystem.impl
+	subcomponents
+		module1: system module1_system.impl;
+		module2: system module2_system.impl;
+	connections
+		C3  : 	port module1.MT -> module2.SR;
+		C4	:	port module2.ST -> module1.MR;
+--		busaccess_module1: bus access rtbus -> module1.thebus;		busaccess_module2: bus access rtbus -> module2.thebus;
+--	flows
+--		etef1 : end to end flow module1.etef2 -> C3 -> module2.f4;
+--		etef2 : end to end flow module2.f5 -> C4 -> module1.f3;
+	properties		
+		Actual_Connection_Binding => (reference (Tisch)) applies to C3;
+		Actual_Connection_Binding => (reference (Tisch)) applies to C4;
+end Dcarsystem.impl;
+	
+end partition_system_impl;

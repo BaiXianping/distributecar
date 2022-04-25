@@ -1,0 +1,51 @@
+Bind threads to processors Report
+
+Binpacker Analysis Report
+
+Warning! Bus UART1 is missing Transmission Time property. Using default of 1.0E-5
+Warning! Bus UART2 is missing Transmission Time property. Using default of 1.0E-5
+Warning! Bus I2C is missing Transmission Time property. Using default of 1.0E-5
+Warning! Bus PWM is missing Transmission Time property. Using default of 1.0E-5
+Warning! Device M1 is missing period property. Using default of 1 ns
+Warning! Device M2 is missing period property. Using default of 1 ns
+Warning! Device M3 is missing period property. Using default of 1 ns
+Warning! Device M4 is missing period property. Using default of 1 ns
+Warning! Data size of connection source port M_TT.T2_O_Servant.o not specified
+Warning! Data size of connection source port M_TT.T3_O_Servant.o not specified
+Warning! Data size of connection source port MR not specified
+Warning! Data size of connection source port Handle.DOF6 not specified
+Warning! Data size of connection source port M_SR.DOF6 not specified
+Warning! Data size of connection source port M_SR.t not specified
+Warning! Data size of connection source port IMU.DOF6 not specified
+Warning! Data size of connection source port IMU.DOF6 not specified
+Warning! Data size of connection source port M_TT.T2_I_Servant.o not specified
+Warning! Data size of connection source port M_TT.T3_I_Servant.o not specified
+Warning! Data size of connection source port M_TT.T4_O_Servant.o not specified
+Warning! Data size of connection source port M_TT.T4_O_Servant.o not specified
+Warning! Data size of connection source port M_TT.T4_O_Servant.o not specified
+Warning! Data size of connection source port M_TT.T4_O_Servant.o not specified
+Warning! Data size of connection source port M_TT.T4_I_Servant.o not specified
+Warning! Data size of connection source port M_TT.T5_O_Servant.o not specified
+Warning! Data size of connection source port M_TT.T5_I_Servant.o not specified
+Warning! Data size of connection source port M_ET.T2_C_Servant.o not specified
+Warning! Data size of connection source port M_ET.T3_C_Servant.o not specified
+Warning! Data size of connection source port M_ET.T4_C_Servant.o not specified
+Warning! Data size of connection source port M_ET.T5_C_Servant.o not specified
+
+Binpacking results: Success
+Processor module1_system_impl_Instance.cpu (1000.0 MIPS) Load: 29% Available: 72%
+Processor module1_system_impl_Instance.Proc (1000.0 MIPS) Load: 0% Available: 100%
+
+Thread to Processor Bindings
+Thread module1_system_impl_Instance.M_TT.T2_I_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_TT.T4_O_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_TT.T2_O_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_TT.T3_I_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_ET.T4_C_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_TT.T5_I_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_ET.T3_C_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_TT.T3_O_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_ET.T2_C_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_TT.T5_O_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_ET.T5_C_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity
+Thread module1_system_impl_Instance.M_TT.T4_I_Servant ==> Processor module1_system_impl_Instance.cpu No CPU capacity

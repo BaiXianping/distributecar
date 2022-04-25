@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="p5_impl_Instance" category="process">
+  <featureInstance name="startevent" category="eventPort">
+    <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.32/@ownedEventPort.0"/>
+  </featureInstance>
+  <featureInstance name="outevent" category="eventPort" direction="out">
+    <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.32/@ownedEventPort.1"/>
+  </featureInstance>
+  <componentInstance name="T5" category="thread">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:NamedValue">
+          <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="29">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="29">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.2"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="8">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.3"/>
+    </ownedPropertyAssociation>
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedEventPort.1"/>
+    </featureInstance>
+    <flowSpecification name="threadflow" source="//@componentInstance.0/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedThreadSubcomponent.0"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T5.impl"/>
+  </componentInstance>
+  <flowSpecification name="flowpath" source="//@featureInstance.0" destination="//@featureInstance.1">
+    <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.32/@ownedFlowSpecification.0"/>
+  </flowSpecification>
+  <connectionInstance name="startevent -> T5.startevent" kind="portConnection" destination="//@componentInstance.0/@featureInstance.0" source="//@featureInstance.0">
+    <connectionReference context="/" source="//@featureInstance.0" destination="//@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="T5.outevent -> outevent" kind="portConnection" destination="//@featureInstance.1" source="//@componentInstance.0/@featureInstance.1">
+    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.1" destination="//@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.1"/>
+    </connectionReference>
+  </connectionInstance>
+  <systemOperationMode name="No Modes"/>
+  <componentImplementation xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p5.impl"/>
+</instance:SystemInstance>

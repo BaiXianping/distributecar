@@ -1,0 +1,351 @@
+package test
+public
+thread T1
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T1;
+thread implementation  T1.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>8ms..8ms;
+Period=>1000ms;
+Dispatch_offset=>0ms;
+end T1.impl;
+thread T2
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T2;
+thread implementation  T2.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>10ms..10ms;
+Period=>1000ms;
+Dispatch_offset=>15ms;
+end T2.impl;
+thread T3
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T3;
+thread implementation  T3.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>21ms..21ms;
+Period=>1000ms;
+Dispatch_offset=>29ms;
+end T3.impl;
+thread T4
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T4;
+thread implementation  T4.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>23ms..23ms;
+Period=>1000ms;
+Dispatch_offset=>50ms;
+end T4.impl;
+thread T5
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T5;
+thread implementation  T5.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>29ms..29ms;
+Period=>1000ms;
+Dispatch_offset=>8ms;
+end T5.impl;
+thread T6
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T6;
+thread implementation  T6.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>19ms..19ms;
+Period=>1000ms;
+Dispatch_offset=>37ms;
+end T6.impl;
+thread T7
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T7;
+thread implementation  T7.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>14ms..14ms;
+Period=>1000ms;
+Dispatch_offset=>45ms;
+end T7.impl;
+thread T8
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T8;
+thread implementation  T8.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>25ms..25ms;
+Period=>1000ms;
+Dispatch_offset=>56ms;
+end T8.impl;
+thread T9
+features
+startevent:in event port;
+outevent:out event port;
+flows
+threadflow:flow path startevent->outevent;
+end T9;
+thread implementation  T9.impl
+properties
+Dispatch_protocol=>Periodic;
+compute_execution_time=>14ms..14ms;
+Period=>1000ms;
+Dispatch_offset=>83ms;
+end T9.impl;
+processor processor1
+end processor1;
+processor implementation processor1.impl
+end processor1.impl;
+processor processor2
+end processor2;
+processor implementation processor2.impl
+end processor2.impl;
+processor processor3
+end processor3;
+processor implementation processor3.impl
+end processor3.impl;
+process p1
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p1;
+process implementation p1.impl
+subcomponents
+T1: thread T1.impl;
+connections
+C1:port startevent->T1.startevent;
+C2:port T1.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T1.threadflow->C2->outevent;
+end p1.impl;
+process p2
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p2;
+process implementation p2.impl
+subcomponents
+T2: thread T2.impl;
+connections
+C1:port startevent->T2.startevent;
+C2:port T2.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T2.threadflow->C2->outevent;
+end p2.impl;
+process p3
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p3;
+process implementation p3.impl
+subcomponents
+T3: thread T3.impl;
+connections
+C1:port startevent->T3.startevent;
+C2:port T3.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T3.threadflow->C2->outevent;
+end p3.impl;
+process p4
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p4;
+process implementation p4.impl
+subcomponents
+T4: thread T4.impl;
+connections
+C1:port startevent->T4.startevent;
+C2:port T4.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T4.threadflow->C2->outevent;
+end p4.impl;
+process p5
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p5;
+process implementation p5.impl
+subcomponents
+T5: thread T5.impl;
+connections
+C1:port startevent->T5.startevent;
+C2:port T5.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T5.threadflow->C2->outevent;
+end p5.impl;
+process p6
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p6;
+process implementation p6.impl
+subcomponents
+T6: thread T6.impl;
+connections
+C1:port startevent->T6.startevent;
+C2:port T6.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T6.threadflow->C2->outevent;
+end p6.impl;
+process p7
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p7;
+process implementation p7.impl
+subcomponents
+T7: thread T7.impl;
+connections
+C1:port startevent->T7.startevent;
+C2:port T7.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T7.threadflow->C2->outevent;
+end p7.impl;
+process p8
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p8;
+process implementation p8.impl
+subcomponents
+T8: thread T8.impl;
+connections
+C1:port startevent->T8.startevent;
+C2:port T8.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T8.threadflow->C2->outevent;
+end p8.impl;
+process p9
+features
+startevent:in event port;
+outevent:out event port;
+flows
+flowpath: flow path startevent->outevent;
+end p9;
+process implementation p9.impl
+subcomponents
+T9: thread T9.impl;
+connections
+C1:port startevent->T9.startevent;
+C2:port T9.outevent->outevent;
+flows
+flowpath: flow path startevent->C1->T9.threadflow->C2->outevent;
+end p9.impl;
+process enterp
+features
+outevent:out event port;
+flows
+flowsource:flow source outevent;
+end enterp;
+process implementation enterp.impl
+ end enterp.impl;
+process exitp
+features
+inevent:in event port;
+flows
+flowsink:flow sink inevent;
+end enterp;
+process implementation exitp.impl
+ end exitp.impl;
+system testtest
+end testtest;
+system implementation testtest.impl
+subcomponents
+processor1: processor processor1.impl;
+processor2: processor processor2.impl;
+processor3: processor processor3.impl;
+p1: process p1.impl;
+p2: process p2.impl;
+p3: process p3.impl;
+p4: process p4.impl;
+p5: process p5.impl;
+p6: process p6.impl;
+p7: process p7.impl;
+p8: process p8.impl;
+p9: process p9.impl;
+enterp:process enterp.impl;
+exitp:process exitp.impl;
+connections
+C1: port p1.outevent->p2.startevent{latency=>7ms..7ms;};
+C2: port p1.outevent->p5.startevent{latency=>8ms..8ms;};
+C3: port p2.outevent->p3.startevent{latency=>4ms..4ms;};
+C4: port p2.outevent->p4.startevent{latency=>5ms..5ms;};
+C5: port p3.outevent->p9.startevent{latency=>9ms..9ms;};
+C6: port p4.outevent->p9.startevent{latency=>10ms..10ms;};
+C7: port p5.outevent->p6.startevent{latency=>9ms..9ms;};
+C8: port p5.outevent->p7.startevent{latency=>8ms..8ms;};
+C9: port p5.outevent->p8.startevent{latency=>9ms..9ms;};
+C10: port p6.outevent->p9.startevent{latency=>9ms..9ms;};
+C11: port p7.outevent->p9.startevent{latency=>10ms..10ms;};
+C12: port p8.outevent->p9.startevent{latency=>8ms..8ms;};
+Center:port enterp.outevent->p1.startevent;
+Cexit:port p9.outevent->exitp.inevent;
+flows
+event_flow0: end to end flow enterp.flowsource->Center->p1.flowpath->C1->p2.flowpath->C3->p3.flowpath->C5->p9.flowpath->Cexit->exitp.flowsink;
+event_flow1: end to end flow enterp.flowsource->Center->p1.flowpath->C1->p2.flowpath->C4->p4.flowpath->C6->p9.flowpath->Cexit->exitp.flowsink;
+event_flow2: end to end flow enterp.flowsource->Center->p1.flowpath->C2->p5.flowpath->C7->p6.flowpath->C10->p9.flowpath->Cexit->exitp.flowsink;
+event_flow3: end to end flow enterp.flowsource->Center->p1.flowpath->C2->p5.flowpath->C8->p7.flowpath->C11->p9.flowpath->Cexit->exitp.flowsink;
+event_flow4: end to end flow enterp.flowsource->Center->p1.flowpath->C2->p5.flowpath->C9->p8.flowpath->C12->p9.flowpath->Cexit->exitp.flowsink;
+properties
+Actual_Processor_Binding=>(reference(processor1)) applies to p3.T3;
+Actual_Processor_Binding=>(reference(processor1)) applies to p4.T4;
+Actual_Processor_Binding=>(reference(processor2)) applies to p2.T2;
+Actual_Processor_Binding=>(reference(processor2)) applies to p7.T7;
+Actual_Processor_Binding=>(reference(processor3)) applies to p1.T1;
+Actual_Processor_Binding=>(reference(processor3)) applies to p5.T5;
+Actual_Processor_Binding=>(reference(processor3)) applies to p6.T6;
+Actual_Processor_Binding=>(reference(processor3)) applies to p8.T8;
+Actual_Processor_Binding=>(reference(processor3)) applies to p9.T9;
+end testtest.impl;
+end test;

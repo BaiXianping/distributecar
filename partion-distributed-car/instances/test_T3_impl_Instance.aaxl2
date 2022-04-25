@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="T3_impl_Instance" category="thread">
+  <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+    <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+    <ownedValue>
+      <ownedValue xsi:type="aadl2:NamedValue">
+        <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+      </ownedValue>
+    </ownedValue>
+    <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPropertyAssociation.0"/>
+  </ownedPropertyAssociation>
+  <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+    <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+    <ownedValue>
+      <ownedValue xsi:type="aadl2:RangeValue">
+        <minimum xsi:type="aadl2:IntegerLiteral" value="21">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </minimum>
+        <maximum xsi:type="aadl2:IntegerLiteral" value="21">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </maximum>
+      </ownedValue>
+    </ownedValue>
+    <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPropertyAssociation.1"/>
+  </ownedPropertyAssociation>
+  <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+    <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+    <ownedValue>
+      <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+        <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+      </ownedValue>
+    </ownedValue>
+    <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPropertyAssociation.2"/>
+  </ownedPropertyAssociation>
+  <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+    <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+    <ownedValue>
+      <ownedValue xsi:type="aadl2:IntegerLiteral" value="29">
+        <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+      </ownedValue>
+    </ownedValue>
+    <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPropertyAssociation.3"/>
+  </ownedPropertyAssociation>
+  <featureInstance name="startevent" category="eventPort">
+    <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+  </featureInstance>
+  <featureInstance name="outevent" category="eventPort" direction="out">
+    <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+  </featureInstance>
+  <flowSpecification name="threadflow" source="//@featureInstance.0" destination="//@featureInstance.1">
+    <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedFlowSpecification.0"/>
+  </flowSpecification>
+  <systemOperationMode name="No Modes"/>
+  <componentImplementation xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T3.impl"/>
+</instance:SystemInstance>

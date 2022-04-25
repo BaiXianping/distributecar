@@ -1,0 +1,317 @@
+package partition_hardware
+public
+	with ARINC653;
+	with Processor_Properties;
+	with Buses::I2C, Buses::SPI, Buses::UART;
+	with partition_software;
+--	with Types;
+--	with Protocols;
+
+
+	data integer
+	end integer;
+
+	--------------------------------------------------------------------------------------------
+	------------------------- Communication ways between nodes ---------------------------------
+	--------------------------------------------------------------------------------------------
+	bus Tisch
+	end Tisch;
+	
+	bus implementation Tisch.i
+	end Tisch.i;
+	
+	--------------------------------------------------------------------------------------------
+	---------------------------------- Drive Wheels --------------------------------------------
+	--------------------------------------------------------------------------------------------
+	bus PWM
+	end PWM;
+	
+	
+	--------------------------------------------------------------------------------------------
+	------------------------------ General stm32f107 Processor --------------------------------------------
+	--------------------------------------------------------------------------------------------
+	processor arinckernel
+		features
+			i2c_bus: requires bus access Buses::I2C::I2C.IMPL;
+			spi_bus: requires bus access Buses::SPI::SPI.IMPL;
+			uart_bus: requires bus access Buses::UART::UART.IMPL;
+			uart2_bus: requires bus access Buses::UART::UART.IMPL;
+			pwm_bus: requires bus access PWM;
+		properties
+			Processor_Properties::Processor_Family => ARM;
+		    Processor_Properties::Endianess        => Little_Endian;
+		    Processor_Properties::Word_Length      => 32 bits;
+		    Processor_Properties::Processor_Frequency => 72 Mhz;
+	end arinckernel;
+	
+	--------------------------------------------------------------------------------------------
+	------------------------------ Master Processor --------------------------------------------
+	--------------------------------------------------------------------------------------------
+	-- @Master virtual processor TTSegment
+	virtual processor TTSeg_runtime
+		properties
+	--		Scheduling_Protocol 	=> (ROUND_ROBIN_PROTOCOL);
+	--		Scheduler_Quantum		=>	2ms;
+	--		Preemptive_Scheduler	=>	true;
+			Scheduling_Protocol 	=>	(FixedTimeline);
+			Frame_Period			=>	100 ms;
+			Slot_Time				=>	2 ms;		
+	end TTSeg_runtime;
+	
+	-- @Master virtual processor ETSegment
+	virtual processor ETSeg_runtime
+		properties
+			Scheduling_Protocol => (POSIX_1003_HIGHEST_PRIORITY_FIRST_PROTOCOL);
+	end ETSeg_runtime;
+	
+	-- @Master Processor instance
+	processor implementation arinckernel.module1
+		subcomponents
+			TTSegment: virtual processor TTSeg_runtime {ARINC653::DAL => LEVEL_A;};
+			ETSegment: virtual processor ETSeg_runtime {ARINC653::DAL => LEVEL_B;};
+		properties
+			ARINC653::Module_Major_Frame => 100 ms;
+			
+			ARINC653::Module_Schedule => ([Partition => reference (TTSegment);
+					Duration => 16 ms;
+					Periodic_Processing_Start => false;],
+				[Partition => reference (ETSegment);
+						Duration => 84 ms;
+						Periodic_Processing_Start => false;]
+			);
+	end arinckernel.module1;
+	
+	
+	--------------------------------------------------------------------------------------------
+	------------------------------ Slave Processor ---------------------------------------------
+	--------------------------------------------------------------------------------------------
+	-- @Slave virtual Processor TTSegment
+	virtual processor TTSeg_runtime2
+		properties
+			Scheduling_Protocol 	=>	(FixedTimeline);
+			Frame_Period			=>	100 ms;
+			Slot_Time				=>	2 ms;
+			
+	end TTSeg_runtime2;
+	
+	-- @Slave virtual Processor ETSegment
+	virtual processor ETSeg_runtime2
+		properties
+			Scheduling_Protocol => (POSIX_1003_HIGHEST_PRIORITY_FIRST_PROTOCOL);
+	end ETSeg_runtime2;
+	
+	-- @Slave Processor instance
+	processor implementation arinckernel.module2
+		subcomponents
+			TTSegment: virtual processor TTSeg_runtime2 {ARINC653::DAL => LEVEL_A;};
+			ETSegment: virtual processor ETSeg_runtime2 {ARINC653::DAL => LEVEL_B;};
+		properties
+			ARINC653::Module_Major_Frame => 100 ms;
+			
+			ARINC653::Module_Schedule => ([Partition => reference (TTSegment);
+					Duration => 20 ms;
+					Periodic_Processing_Start => false;],
+				[Partition => reference (ETSegment);
+						Duration => 80 ms;
+						Periodic_Processing_Start => false;]
+			);
+	end arinckernel.module2;
+	
+
+
+	--------------------------------------------------------------------------------------------
+	---------------------------------- Peripherals ---------------------------------------------
+	--------------------------------------------------------------------------------------------
+	-- 以下所有外设的频率都需要重新设置
+	-- @Distance sensor
+	device GP2Y0A21
+		features
+			DOF6: out data port partition_software::integer;
+			uart_bus: requires bus access Buses::UART::UART.IMPL;
+		flows
+			f1: flow source DOF6 {latency => 200 us .. 500 us;};
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 10 ms;	--根据红外传感器的频率修改一下
+	end GP2Y0A21;
+	
+	-- @IMU sensor
+	device HW579
+		features
+			DOF6: out data port partition_software::integer;
+			i2c_bus: requires bus access Buses::I2C::I2C.impl;
+		flows
+			f1: flow source DOF6 {latency => 200 us .. 500 us;};
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 10 ms;		--根据IMU的更新频率修改一下
+	end HW579;
+	
+	-- @Handle
+	device SONY2
+		features
+			DOF6: out data port partition_software::integer;
+			uart_bus: requires bus access Buses::UART::UART.IMPL;
+		flows
+			f1: flow source DOF6 {latency => 200 us .. 500 us;};
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 10 ms;
+	end SONY2;
+	
+	-- @Master transceiver
+	device M_transceiver
+		features
+			DOF: in data port partition_software::integer;
+			DOF6: out data port partition_software::integer;
+			uart_bus: requires bus access Buses::UART::UART.IMPL;
+			WSNport: requires bus access Tisch.i;
+			t : out data port partition_software::integer;
+			r : in data port partition_software::integer;
+		flows
+			f1: flow path r -> DOF6 {latency => 200 us .. 500 us;};
+			f2: flow path DOF -> t {latency => 200 us .. 500 us;};
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 10 ms;
+	end M_transceiver;
+	
+	-- @Slave transceiver
+	device S_transceiver
+		features
+			DOF: in data port partition_software::integer;
+			DOF6: out data port partition_software::integer;
+			uart2_bus: requires bus access Buses::UART::UART.IMPL;
+			WSNport: requires bus access Tisch.i;
+			t : out data port partition_software::integer;
+			r : in data port partition_software::integer;
+		flows
+			f1: flow path r -> DOF6 {latency => 200 us .. 500 us;};
+			f2: flow path DOF -> t {latency => 200 us .. 500 us;};
+		properties
+			Dispatch_Protocol => Periodic;
+			Period => 10000 us;
+	end S_transceiver;
+	
+	--------------------------------------------------------------------------------------------
+	---------------------------------- Actuator ------------------------------------------------
+	--------------------------------------------------------------------------------------------
+	device Wheel
+		features
+			rate: in data port partition_software::integer;
+			pwm_bus: requires bus access PWM;
+		flows
+			f1: flow sink rate {latency => 100 us .. 100 us;};
+
+	end Wheel;
+	
+	--------------------------------------------------------------------------------------------
+	---------------------------------- Master Car System ---------------------------------------
+	--------------------------------------------------------------------------------------------
+	system mastercarsystem
+		features
+			openwsn: requires bus access Tisch.i;
+			MT : out data port partition_software::integer;
+			MR : in data port partition_software::integer;
+	end mastercarsystem;
+	
+	system implementation mastercarsystem.impl
+		subcomponents
+			Proc: processor arinckernel.module1;
+			
+			Handle: device SONY2;
+			M_SR: device M_transceiver;
+			IMU: device HW579;
+			M1: device Wheel;
+			M2: device Wheel;
+			M3: device Wheel;
+			M4: device Wheel;
+			
+			UART1: bus Buses::UART::UART.impl;
+			UART2: bus Buses::UART::UART.impl;
+			I2C: bus Buses::I2C::I2C.impl;
+			PWM: bus PWM;
+			
+		connections
+			C1: bus access Proc.uart_bus -> UART1;
+			C2: bus access Handle.uart_bus -> UART1;
+			C3: bus access Proc.uart2_bus -> UART2;
+			C4: bus access M_SR.uart_bus -> UART2;
+			
+			C5: bus access Proc.i2c_bus -> I2C;
+			C6: bus access IMU.i2c_bus -> I2C;
+			
+			C7: bus access M1.pwm_bus -> PWM;
+			C8: bus access M2.pwm_bus -> PWM;
+			C9: bus access M3.pwm_bus -> PWM;
+			C10: bus access M4.pwm_bus -> PWM;
+			C11: bus access Proc.pwm_bus -> PWM;
+					
+	end mastercarsystem.impl;
+	
+	
+	
+	
+	--------------------------------------------------------------------------------------------
+	---------------------------------- Slave Car System ----------------------------------------
+	--------------------------------------------------------------------------------------------
+	system slavecarsystem
+		features
+			openwsn: requires bus access Tisch.i;
+			ST : out data port partition_software::integer;
+			SR : in data port partition_software::integer;
+	end slavecarsystem;
+	
+	system implementation slavecarsystem.impl
+		subcomponents
+			Proc: processor arinckernel.module2;
+			
+			S_SR: device S_transceiver;
+			DistanceSensor: device GP2Y0A21;
+			IMU: device HW579;
+			M1: device Wheel;
+			M2: device Wheel;
+			M3: device Wheel;
+			M4: device Wheel;
+			
+			UART1: bus Buses::UART::UART.impl;
+			UART2: bus Buses::UART::UART.impl;
+			I2C: bus Buses::I2C::I2C.impl;
+			PWM: bus PWM;
+		connections
+			C1: bus access Proc.uart_bus -> UART1;
+			C2: bus access DistanceSensor.uart_bus -> UART1;
+			
+			C3: bus access Proc.uart2_bus -> UART2;
+			C4: bus access S_SR.uart2_bus -> UART2;
+			
+			C5: bus access M1.pwm_bus -> PWM;
+			C6: bus access M2.pwm_bus -> PWM;
+			C7: bus access M3.pwm_bus -> PWM;
+			C8: bus access M4.pwm_bus -> PWM;
+			C9: bus access Proc.pwm_bus -> PWM;
+			C30: bus access Proc.i2c_bus -> I2C;
+			C31: bus access IMU.i2c_bus -> I2C;
+	end slavecarsystem.impl;
+	
+	
+	--------------------------------------------------------------------------------------------
+	---------------------------------- Distributed Car System ----------------------------------
+	--------------------------------------------------------------------------------------------	
+	system distributedcarsystem
+	end distributedcarsystem;
+	
+	system implementation distributedcarsystem.impl
+		subcomponents
+			MasterCar: system mastercarsystem.impl;
+--			M_SR: device M_transceiver;
+			SlaveCar: system slavecarsystem.impl;
+--			S_SR: device S_transceiver;
+			
+			Tisch: bus Tisch.i;
+		connections
+			C1: bus access MasterCar.openwsn -> Tisch;
+			C2: bus access SlaveCar.openwsn -> Tisch;
+	end distributedcarsystem.impl;
+	
+end partition_hardware;

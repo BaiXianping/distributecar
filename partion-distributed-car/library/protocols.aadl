@@ -1,0 +1,35 @@
+--  This package models protocols layers
+
+package Protocols
+public
+--  with Bus_Properties;
+  --  Application protocols are modeled as AADLv2 virtual bus
+  --  components, and then stacked. Each protocol 
+
+  ----------------------
+  -- Generic_Protocol --
+  ----------------------
+  
+  ---这个不是可重用的库文件，这个被我改的面目全非了----------------------
+  feature group Protocol_Pins
+  features
+    RX :  in event port;
+    TX : out event port;
+  end Protocol_Pins;
+
+  virtual bus Generic_Protocol
+  end Generic_Protocol;
+
+  virtual bus implementation Generic_Protocol.impl
+  end Generic_Protocol.impl;
+
+  device GenericProtocol
+  features
+    Protocol : requires bus access Generic_Protocol.impl;
+  end GenericProtocol;
+
+  
+--  virtual bus Generic_Protocol
+--  end Generic_Protocol;
+
+end Protocols;

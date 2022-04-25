@@ -1,0 +1,1075 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="testtest_impl_Instance" category="system">
+  <componentInstance name="p1" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.24/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.24/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T1" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.13"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.4"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="8">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="8">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.0/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T1.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.0/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.24/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.0"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p1.impl"/>
+  </componentInstance>
+  <componentInstance name="p2" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.26/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.26/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T2" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.12"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="10">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="10">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="15">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.1/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T2.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.1/@featureInstance.0" destination="//@componentInstance.1/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.26/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.1"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p2.impl"/>
+  </componentInstance>
+  <componentInstance name="p3" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.28/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.28/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T3" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.11"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="21">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="21">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="29">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.2/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.2/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.29/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T3.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.2/@featureInstance.0" destination="//@componentInstance.2/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.28/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.2"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p3.impl"/>
+  </componentInstance>
+  <componentInstance name="p4" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.30/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.30/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T4" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.11"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="23">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="23">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="50">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.3/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.3/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T4.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.3/@featureInstance.0" destination="//@componentInstance.3/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.30/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.3"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p4.impl"/>
+  </componentInstance>
+  <componentInstance name="p5" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.32/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.32/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T5" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.13"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.5"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="29">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="29">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="8">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.4/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.4/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T5.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.4/@featureInstance.0" destination="//@componentInstance.4/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.32/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.4"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p5.impl"/>
+  </componentInstance>
+  <componentInstance name="p6" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.34/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.34/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T6" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.13"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.6"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="19">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="19">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="37">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.5/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.5/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.35/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T6.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.5/@featureInstance.0" destination="//@componentInstance.5/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.34/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.5"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p6.impl"/>
+  </componentInstance>
+  <componentInstance name="p7" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.36/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.36/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T7" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.12"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="14">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="14">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="45">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.6/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.6/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.37/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T7.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.6/@featureInstance.0" destination="//@componentInstance.6/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.36/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.6"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p7.impl"/>
+  </componentInstance>
+  <componentInstance name="p8" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.38/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.38/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T8" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.13"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.7"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="25">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="25">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="56">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.7/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.7/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.39/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T8.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.7/@featureInstance.0" destination="//@componentInstance.7/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.38/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.7"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p8.impl"/>
+  </componentInstance>
+  <componentInstance name="p9" category="process">
+    <featureInstance name="startevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.40/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.40/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="T9" category="thread">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Deployment_Properties.aadl#Deployment_Properties.Actual_Processor_Binding"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="instance:InstanceReferenceValue" referencedInstanceObject="//@componentInstance.13"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPropertyAssociation.8"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Compute_Execution_Time"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:RangeValue">
+            <minimum xsi:type="aadl2:IntegerLiteral" value="14">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </minimum>
+            <maximum xsi:type="aadl2:IntegerLiteral" value="14">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </maximum>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedPropertyAssociation.1"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="1000">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedPropertyAssociation.2"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Dispatch_Offset"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="83">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedPropertyAssociation.3"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="startevent" category="eventPort">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="outevent" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedEventPort.1"/>
+      </featureInstance>
+      <flowSpecification name="threadflow" source="//@componentInstance.8/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.1">
+        <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFlowSpecification.0"/>
+      </flowSpecification>
+      <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.41/@ownedThreadSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ThreadImplementation" href="../test.aadl#test.T9.impl"/>
+    </componentInstance>
+    <flowSpecification name="flowpath" source="//@componentInstance.8/@featureInstance.0" destination="//@componentInstance.8/@featureInstance.1">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.40/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.8"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.p9.impl"/>
+  </componentInstance>
+  <componentInstance name="enterp" category="process">
+    <featureInstance name="outevent" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.42/@ownedEventPort.0"/>
+    </featureInstance>
+    <flowSpecification name="flowsource" destination="//@componentInstance.9/@featureInstance.0">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.42/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.9"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.enterp.impl"/>
+  </componentInstance>
+  <componentInstance name="exitp" category="process">
+    <featureInstance name="inevent" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.44/@ownedEventPort.0"/>
+    </featureInstance>
+    <flowSpecification name="flowsink" source="//@componentInstance.10/@featureInstance.0">
+      <flowSpecification href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.44/@ownedFlowSpecification.0"/>
+    </flowSpecification>
+    <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessSubcomponent.10"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessImplementation" href="../test.aadl#test.exitp.impl"/>
+  </componentInstance>
+  <componentInstance name="processor1" category="processor">
+    <subcomponent xsi:type="aadl2:ProcessorSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessorSubcomponent.0"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessorImplementation" href="../test.aadl#test.processor1.impl"/>
+  </componentInstance>
+  <componentInstance name="processor2" category="processor">
+    <subcomponent xsi:type="aadl2:ProcessorSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessorSubcomponent.1"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessorImplementation" href="../test.aadl#test.processor2.impl"/>
+  </componentInstance>
+  <componentInstance name="processor3" category="processor">
+    <subcomponent xsi:type="aadl2:ProcessorSubcomponent" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedProcessorSubcomponent.2"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:ProcessorImplementation" href="../test.aadl#test.processor3.impl"/>
+  </componentInstance>
+  <endToEndFlow name="event_flow0" flowElement="//@componentInstance.9/@flowSpecification.0 //@connectionInstance.13 //@componentInstance.0/@componentInstance.0/@flowSpecification.0 //@connectionInstance.0 //@componentInstance.1/@componentInstance.0/@flowSpecification.0 //@connectionInstance.2 //@componentInstance.2/@componentInstance.0/@flowSpecification.0 //@connectionInstance.4 //@componentInstance.8/@componentInstance.0/@flowSpecification.0 //@connectionInstance.12 //@componentInstance.10/@flowSpecification.0">
+    <endToEndFlow href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedEndToEndFlow.0"/>
+  </endToEndFlow>
+  <endToEndFlow name="event_flow1" flowElement="//@componentInstance.9/@flowSpecification.0 //@connectionInstance.13 //@componentInstance.0/@componentInstance.0/@flowSpecification.0 //@connectionInstance.0 //@componentInstance.1/@componentInstance.0/@flowSpecification.0 //@connectionInstance.3 //@componentInstance.3/@componentInstance.0/@flowSpecification.0 //@connectionInstance.5 //@componentInstance.8/@componentInstance.0/@flowSpecification.0 //@connectionInstance.12 //@componentInstance.10/@flowSpecification.0">
+    <endToEndFlow href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedEndToEndFlow.1"/>
+  </endToEndFlow>
+  <endToEndFlow name="event_flow2" flowElement="//@componentInstance.9/@flowSpecification.0 //@connectionInstance.13 //@componentInstance.0/@componentInstance.0/@flowSpecification.0 //@connectionInstance.1 //@componentInstance.4/@componentInstance.0/@flowSpecification.0 //@connectionInstance.6 //@componentInstance.5/@componentInstance.0/@flowSpecification.0 //@connectionInstance.9 //@componentInstance.8/@componentInstance.0/@flowSpecification.0 //@connectionInstance.12 //@componentInstance.10/@flowSpecification.0">
+    <endToEndFlow href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedEndToEndFlow.2"/>
+  </endToEndFlow>
+  <endToEndFlow name="event_flow3" flowElement="//@componentInstance.9/@flowSpecification.0 //@connectionInstance.13 //@componentInstance.0/@componentInstance.0/@flowSpecification.0 //@connectionInstance.1 //@componentInstance.4/@componentInstance.0/@flowSpecification.0 //@connectionInstance.7 //@componentInstance.6/@componentInstance.0/@flowSpecification.0 //@connectionInstance.10 //@componentInstance.8/@componentInstance.0/@flowSpecification.0 //@connectionInstance.12 //@componentInstance.10/@flowSpecification.0">
+    <endToEndFlow href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedEndToEndFlow.3"/>
+  </endToEndFlow>
+  <endToEndFlow name="event_flow4" flowElement="//@componentInstance.9/@flowSpecification.0 //@connectionInstance.13 //@componentInstance.0/@componentInstance.0/@flowSpecification.0 //@connectionInstance.1 //@componentInstance.4/@componentInstance.0/@flowSpecification.0 //@connectionInstance.8 //@componentInstance.7/@componentInstance.0/@flowSpecification.0 //@connectionInstance.11 //@componentInstance.8/@componentInstance.0/@flowSpecification.0 //@connectionInstance.12 //@componentInstance.10/@flowSpecification.0">
+    <endToEndFlow href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedEndToEndFlow.4"/>
+  </endToEndFlow>
+  <connectionInstance name="p1.T1.outevent -> p2.T2.startevent" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="7">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="7">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.0/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.0/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.1" destination="//@componentInstance.1/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.0"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@featureInstance.0" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p1.T1.outevent -> p5.T5.startevent" complete="true" kind="portConnection" destination="//@componentInstance.4/@componentInstance.0/@featureInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="8">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="8">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.1/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.0/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.1" destination="//@componentInstance.4/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.4" source="//@componentInstance.4/@featureInstance.0" destination="//@componentInstance.4/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p2.T2.outevent -> p3.T3.startevent" complete="true" kind="portConnection" destination="//@componentInstance.2/@componentInstance.0/@featureInstance.0" source="//@componentInstance.1/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="4">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.2/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.1/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.1" destination="//@componentInstance.2/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.2"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.2" source="//@componentInstance.2/@featureInstance.0" destination="//@componentInstance.2/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.29/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p2.T2.outevent -> p4.T4.startevent" complete="true" kind="portConnection" destination="//@componentInstance.3/@componentInstance.0/@featureInstance.0" source="//@componentInstance.1/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="5">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="5">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.3/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.1/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.1" destination="//@componentInstance.3/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.3"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.3" source="//@componentInstance.3/@featureInstance.0" destination="//@componentInstance.3/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p3.T3.outevent -> p9.T9.startevent" complete="true" kind="portConnection" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0" source="//@componentInstance.2/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="9">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="9">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.4/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.2" source="//@componentInstance.2/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.2/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.29/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.2/@featureInstance.1" destination="//@componentInstance.8/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.4"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.8" source="//@componentInstance.8/@featureInstance.0" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.41/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p4.T4.outevent -> p9.T9.startevent" complete="true" kind="portConnection" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0" source="//@componentInstance.3/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="10">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="10">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.5/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.3" source="//@componentInstance.3/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.3/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.31/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.3/@featureInstance.1" destination="//@componentInstance.8/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.5"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.8" source="//@componentInstance.8/@featureInstance.0" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.41/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p5.T5.outevent -> p6.T6.startevent" complete="true" kind="portConnection" destination="//@componentInstance.5/@componentInstance.0/@featureInstance.0" source="//@componentInstance.4/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="9">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="9">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.6/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.4" source="//@componentInstance.4/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.4/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.4/@featureInstance.1" destination="//@componentInstance.5/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.6"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.5" source="//@componentInstance.5/@featureInstance.0" destination="//@componentInstance.5/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.35/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p5.T5.outevent -> p7.T7.startevent" complete="true" kind="portConnection" destination="//@componentInstance.6/@componentInstance.0/@featureInstance.0" source="//@componentInstance.4/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="8">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="8">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.7/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.4" source="//@componentInstance.4/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.4/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.4/@featureInstance.1" destination="//@componentInstance.6/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.7"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.6" source="//@componentInstance.6/@featureInstance.0" destination="//@componentInstance.6/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.37/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p5.T5.outevent -> p8.T8.startevent" complete="true" kind="portConnection" destination="//@componentInstance.7/@componentInstance.0/@featureInstance.0" source="//@componentInstance.4/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="9">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="9">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.8/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.4" source="//@componentInstance.4/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.4/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.33/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.4/@featureInstance.1" destination="//@componentInstance.7/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.8"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.7" source="//@componentInstance.7/@featureInstance.0" destination="//@componentInstance.7/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.39/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p6.T6.outevent -> p9.T9.startevent" complete="true" kind="portConnection" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0" source="//@componentInstance.5/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="9">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="9">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.9/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.5" source="//@componentInstance.5/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.5/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.35/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.5/@featureInstance.1" destination="//@componentInstance.8/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.9"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.8" source="//@componentInstance.8/@featureInstance.0" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.41/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p7.T7.outevent -> p9.T9.startevent" complete="true" kind="portConnection" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0" source="//@componentInstance.6/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="10">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="10">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.10/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.6" source="//@componentInstance.6/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.6/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.37/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.6/@featureInstance.1" destination="//@componentInstance.8/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.10"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.8" source="//@componentInstance.8/@featureInstance.0" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.41/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p8.T8.outevent -> p9.T9.startevent" complete="true" kind="portConnection" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0" source="//@componentInstance.7/@componentInstance.0/@featureInstance.1">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Latency"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:RangeValue">
+          <minimum xsi:type="aadl2:IntegerLiteral" value="8">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </minimum>
+          <maximum xsi:type="aadl2:IntegerLiteral" value="8">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </maximum>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.11/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.7" source="//@componentInstance.7/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.7/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.39/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.7/@featureInstance.1" destination="//@componentInstance.8/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.11"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.8" source="//@componentInstance.8/@featureInstance.0" destination="//@componentInstance.8/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.41/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="p9.T9.outevent -> exitp.inevent" complete="true" kind="portConnection" destination="//@componentInstance.10/@featureInstance.0" source="//@componentInstance.8/@componentInstance.0/@featureInstance.1">
+    <connectionReference context="//@componentInstance.8" source="//@componentInstance.8/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.8/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.41/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.8/@featureInstance.1" destination="//@componentInstance.10/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.13"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="enterp.outevent -> p1.T1.startevent" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.0" source="//@componentInstance.9/@featureInstance.0">
+    <connectionReference context="/" source="//@componentInstance.9/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.47/@ownedPortConnection.12"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@featureInstance.0" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../test.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <systemOperationMode name="No Modes"/>
+  <componentImplementation xsi:type="aadl2:SystemImplementation" href="../test.aadl#test.testtest.impl"/>
+</instance:SystemInstance>
