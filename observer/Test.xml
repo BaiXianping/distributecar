@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.</declaration>
+	<template>
+		<name x="5" y="5">s</name>
+		<parameter>int period</parameter>
+		<declaration>// Place local declarations here.
+clock loc;
+</declaration>
+		<location id="id0" x="-416" y="-110">
+			<name x="-426" y="-144">idle</name>
+		</location>
+		<location id="id1" x="-255" y="-110">
+			<name x="-265" y="-144">busy</name>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-322" y="-165">loc&lt;=period</label>
+			<nail x="-340" y="-153"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-374" y="-102">dipatchs?</label>
+			<nail x="-340" y="-68"/>
+		</transition>
+	</template>
+	<template>
+		<name>t</name>
+		<parameter>int minexecutime,int maxexecutime,int deadline</parameter>
+		<declaration>clock dur,loc;
+bool active;//是否可以接受信息</declaration>
+		<location id="id2" x="-646" y="-187">
+			<name x="-656" y="-221">idle</name>
+		</location>
+		<location id="id3" x="-501" y="-195">
+			<name x="-511" y="-229">ready</name>
+		</location>
+		<location id="id4" x="-544" y="17">
+			<name x="-578" y="34">infoprocess</name>
+			<label kind="invariant" x="-595" y="51">loc&lt;=maxexecutime</label>
+		</location>
+		<location id="id5" x="-663" y="-51">
+			<name x="-688" y="-85">infosend</name>
+		</location>
+		<location id="id6" x="-433" y="-85">
+			<name x="-443" y="-119">infoaccept</name>
+		</location>
+		<init ref="id2"/>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-654" y="-136">infob!</label>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-773" y="-34">(dur&lt;=deadline)&amp;&amp;(loc&gt;=minexecutime)</label>
+			<nail x="-561" y="8"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id4"/>
+			<label kind="guard" x="-509" y="-68">dur&lt;deadline</label>
+			<label kind="assignment" x="-509" y="-34">loc:=0</label>
+			<nail x="-442" y="-76"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-483" y="-161">infoa?</label>
+			<label kind="assignment" x="-483" y="-144">loc:=0,active:=0</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="synchronisation" x="-612" y="-221">dispatcht1?</label>
+		</transition>
+	</template>
+	<template>
+		<name>inport</name>
+		<location id="id7" x="-799" y="-229" color="#c0c0c0">
+			<name x="-809" y="-263">idle</name>
+		</location>
+		<location id="id8" x="-612" y="-229">
+			<name x="-622" y="-263">infoaccept</name>
+		</location>
+		<init ref="id7"/>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id7"/>
+			<label kind="assignment" x="-765" y="-272">active:=0</label>
+			<nail x="-705" y="-272"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-722" y="-195">infoa?</label>
+			<label kind="assignment" x="-773" y="-212">active:=1</label>
+			<nail x="-705" y="-195"/>
+		</transition>
+	</template>
+	<template>
+		<name>outport</name>
+		<location id="id9" x="-1470" y="-102">
+		</location>
+		<location id="id10" x="-1334" y="-110">
+		</location>
+		<init ref="id9"/>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<nail x="-1402" y="-76"/>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id10"/>
+			<nail x="-1411" y="-136"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = Template();
+// List one or more processes to be composed into a system.
+system Process;
+    </system>
+	<queries>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>

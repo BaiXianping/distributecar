@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.</declaration>
+	<template>
+		<name x="5" y="5">Delay</name>
+		<parameter>bool GoUp,bool GoDown,double Tmin</parameter>
+		<declaration>// Place local declarations here.
+clock x;</declaration>
+		<location id="id0" x="-323" y="-153">
+		</location>
+		<location id="id1" x="-221" y="-153">
+			<name x="-231" y="-187">s0</name>
+		</location>
+		<location id="id2" x="-187" y="-59">
+			<name x="-196" y="-51">OK</name>
+		</location>
+		<location id="id3" x="-288" y="-59">
+			<name x="-315" y="-51">ERROR</name>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-289" y="-127">x&lt;Tmin-1</label>
+			<label kind="synchronisation" x="-298" y="-110">GoDown?</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-221" y="-119">GoUp?</label>
+			<label kind="assignment" x="-213" y="-102">x:=0</label>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-298" y="-170">GoUp?</label>
+			<label kind="assignment" x="-289" y="-153">x:=0</label>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-170" y="-153">x&gt;=Tmin</label>
+			<label kind="synchronisation" x="-170" y="-136">GoDown?</label>
+			<nail x="-145" y="-136"/>
+		</transition>
+	</template>
+	<template>
+		<name>Exclusion</name>
+		<parameter>bool b[2],bool a[2],bool Enter</parameter>
+		<location id="id4" x="-731" y="-586">
+			<name x="-748" y="-620">S0</name>
+		</location>
+		<location id="id5" x="-629" y="-586">
+			<name x="-639" y="-620">B</name>
+		</location>
+		<location id="id6" x="-612" y="-475">
+			<name x="-622" y="-509">ERROR</name>
+		</location>
+		<location id="id7" x="-688" y="-484">
+			<name x="-688" y="-518">A</name>
+		</location>
+		<location id="id8" x="-833" y="-586">
+		</location>
+		<init ref="id8"/>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-815" y="-603">Enter?</label>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-684" y="-531">a[0]?</label>
+			<nail x="-680" y="-543"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-748" y="-543">a[1]?</label>
+			<nail x="-731" y="-518"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-670" y="-497">b[1]?</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-620" y="-552">a[1]?</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-671" y="-620">b[0]?</label>
+			<nail x="-680" y="-611"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-680" y="-586">b[1]?</label>
+			<nail x="-671" y="-560"/>
+		</transition>
+	</template>
+	<template>
+		<name>AbsenceAAfterBwithinI</name>
+		<location id="id9" x="-484" y="-144">
+		</location>
+		<init ref="id9"/>
+	</template>
+	<template>
+		<name>ThreadA</name>
+		<location id="id10" x="-493" y="8">
+			<name x="-503" y="-26">let_tti</name>
+			<label kind="invariant" x="-503" y="25">local_clock&lt;=0</label>
+			<urgent/>
+		</location>
+		<location id="id11" x="-493" y="-119">
+			<name x="-503" y="-153">let_tto</name>
+			<label kind="invariant" x="-503" y="-102">local_clock&lt;=let</label>
+			<urgent/>
+		</location>
+		<location id="id12" x="-374" y="8">
+			<name x="-384" y="-26">wait_to_compute</name>
+			<label kind="invariant" x="-384" y="25">local_clock&lt;let</label>
+		</location>
+		<location id="id13" x="-374" y="-119">
+			<name x="-384" y="-153">finish_computing</name>
+			<label kind="invariant" x="-384" y="-102">local_clock&lt;=let</label>
+		</location>
+		<location id="id14" x="-238" y="8">
+			<name x="-248" y="-26">let_compute_start</name>
+			<label kind="invariant" x="-248" y="25">local_clock&lt;let</label>
+		</location>
+		<location id="id15" x="-238" y="-119">
+			<name x="-248" y="-153">let_compute_end</name>
+			<label kind="invariant" x="-248" y="-102">local_clock&lt;let</label>
+		</location>
+		<init ref="id10"/>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id11"/>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id13"/>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id15"/>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id14"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id12"/>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+Process = Delay(1,1,10);
+// List one or more processes to be composed into a system.
+system Process;
+    </system>
+	<queries>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+chan occupyhandle,sendhandlemsg;
+chan handlemsgproduct,fromhandle;
+chan fromhandletomaster;</declaration>
+	<template>
+		<name x="5" y="5">handle</name>
+		<declaration>// Place local declarations here.</declaration>
+		<location id="id0" x="-391" y="-110">
+			<name x="-401" y="-144">free</name>
+		</location>
+		<location id="id1" x="-289" y="-110">
+			<name x="-299" y="-144">busy</name>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="synchronisation" x="-382" y="-93">sendhandlemsg?</label>
+			<nail x="-340" y="-93"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-382" y="-161">occupyhandle?</label>
+			<nail x="-340" y="-136"/>
+		</transition>
+	</template>
+	<template>
+		<name>handletask</name>
+		<declaration>clock local_clock;
+int k=0;</declaration>
+		<location id="id2" x="-425" y="-144">
+			<name x="-467" y="-161">idle</name>
+			<label kind="invariant" x="-603" y="-161">local_clock&lt;=k*100</label>
+			<urgent/>
+		</location>
+		<location id="id3" x="-365" y="-178">
+			<name x="-375" y="-212">ready</name>
+			<urgent/>
+		</location>
+		<location id="id4" x="-365" y="-110">
+			<name x="-374" y="-93">handlesend</name>
+		</location>
+		<location id="id5" x="-280" y="-178">
+			<name x="-263" y="-187">handlemsg</name>
+			<label kind="invariant" x="-263" y="-170">local_clock&lt;=3+k*100</label>
+		</location>
+		<location id="id6" x="-280" y="-110">
+			<name x="-263" y="-119">handlecompute</name>
+			<label kind="invariant" x="-263" y="-102">local_clock&lt;=5+k*100</label>
+		</location>
+		<init ref="id2"/>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id2"/>
+			<label kind="synchronisation" x="-467" y="-127">fromhandle?</label>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-374" y="-144">handlemsgproduct!</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id6"/>
+		</transition>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-340" y="-204">occupyhandle!</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-501" y="-195">local_clock==k*100</label>
+			<label kind="assignment" x="-501" y="-178">k:=k+1</label>
+		</transition>
+	</template>
+	<template>
+		<name>fromtohandleport</name>
+		<declaration>clock local_clock;</declaration>
+		<location id="id7" x="-204" y="-34">
+			<name x="-246" y="-51">idle</name>
+		</location>
+		<location id="id8" x="-127" y="-93">
+			<name x="-170" y="-127">msgaccept</name>
+			<urgent/>
+		</location>
+		<location id="id9" x="-127" y="8">
+			<name x="-137" y="-26">end</name>
+			<urgent/>
+		</location>
+		<location id="id10" x="-25" y="8">
+			<name x="-8" y="0">msgsend</name>
+			<urgent/>
+		</location>
+		<location id="id11" x="-25" y="-93">
+			<name x="-8" y="-102">compute</name>
+			<label kind="invariant" x="-8" y="-85">local_clock&lt;=5</label>
+		</location>
+		<init ref="id7"/>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-263" y="-8">sendhandlemsg!</label>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<label kind="synchronisation" x="-136" y="25">fromhandletomaster!</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-17" y="-51">fromhandle!</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id11"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-272" y="-93">handlemsgproduct?</label>
+		</transition>
+	</template>
+	<template>
+		<name>mastercariotask</name>
+		<location id="id12" x="-560" y="-68">
+			<name x="-595" y="-59">end</name>
+			<urgent/>
+		</location>
+		<location id="id13" x="-620" y="-110">
+			<name x="-662" y="-127">idle</name>
+			<label kind="invariant" x="-798" y="-127">local_clock&lt;=k*100</label>
+			<urgent/>
+		</location>
+		<location id="id14" x="-475" y="-68">
+			<name x="-510" y="-102">outputmsg</name>
+			<label kind="invariant" x="-518" y="-59">local_clock&lt;=50+k*100</label>
+		</location>
+		<location id="id15" x="-467" y="-161">
+			<name x="-484" y="-221">inputmsg</name>
+			<label kind="invariant" x="-484" y="-204">local_clock&lt;=3+k*100</label>
+		</location>
+		<location id="id16" x="-561" y="-161">
+			<name x="-571" y="-195">ready</name>
+			<urgent/>
+		</location>
+		<location id="id17" x="-374" y="-161">
+			<name x="-357" y="-170">waitcompute</name>
+		</location>
+		<location id="id18" x="-374" y="-68">
+			<name x="-357" y="-77">waitcpu</name>
+		</location>
+		<init ref="id13"/>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="-425" y="-93">mtt?</label>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="-374" y="-127">mastercompute?</label>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id17"/>
+			<label kind="synchronisation" x="-450" y="-161">input!</label>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id13"/>
+			<label kind="synchronisation" x="-646" y="-85">fromcpu?</label>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-552" y="-42">cpumsgproduct!</label>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id15"/>
+			<label kind="synchronisation" x="-527" y="-178">mtt?</label>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id16"/>
+			<label kind="guard" x="-705" y="-178">local_clock==k*100</label>
+			<label kind="synchronisation" x="-595" y="-127">fromcpu?</label>
+			<label kind="assignment" x="-705" y="-161">k:=k+1</label>
+		</transition>
+	</template>
+	<template>
+		<name>masterctask</name>
+		<declaration>clock local_clock;</declaration>
+		<location id="id19" x="-85" y="42">
+			<name x="-127" y="34">idle</name>
+			<urgent/>
+		</location>
+		<location id="id20" x="59" y="42">
+			<name x="75" y="26">compute</name>
+			<label kind="invariant" x="75" y="42">local_clock&lt;=3</label>
+		</location>
+		<location id="id21" x="-17" y="-17">
+			<name x="-27" y="-51">ready</name>
+			<urgent/>
+		</location>
+		<init ref="id19"/>
+		<transition>
+			<source ref="id20"/>
+			<target ref="id19"/>
+			<label kind="synchronisation" x="-59" y="42">mastercompute!</label>
+		</transition>
+		<transition>
+			<source ref="id21"/>
+			<target ref="id20"/>
+			<label kind="synchronisation" x="17" y="-8">met?</label>
+		</transition>
+		<transition>
+			<source ref="id19"/>
+			<target ref="id21"/>
+			<label kind="synchronisation" x="-136" y="8">input?</label>
+			<label kind="assignment" x="-136" y="-8">local_clock:=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>mastercarcpu</name>
+		<location id="id22" x="-357" y="-25">
+			<name x="-367" y="-59">idle</name>
+			<urgent/>
+		</location>
+		<location id="id23" x="-246" y="-85">
+			<name x="-229" y="-93">ttsegment</name>
+			<label kind="invariant" x="-229" y="-68">local_clock&lt;=16</label>
+		</location>
+		<location id="id24" x="-246" y="34">
+			<name x="-229" y="25">etsegment</name>
+			<label kind="invariant" x="-229" y="42">local_clock&lt;=100</label>
+		</location>
+		<init ref="id22"/>
+		<transition>
+			<source ref="id24"/>
+			<target ref="id22"/>
+			<label kind="guard" x="-399" y="8">local_clock==100</label>
+		</transition>
+		<transition>
+			<source ref="id23"/>
+			<target ref="id24"/>
+			<label kind="synchronisation" x="-238" y="-34">met!</label>
+		</transition>
+		<transition>
+			<source ref="id22"/>
+			<target ref="id23"/>
+			<label kind="synchronisation" x="-357" y="-85">mtt!</label>
+			<label kind="assignment" x="-357" y="-102">local_clock:=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>fromtomasterport</name>
+		<location id="id25" x="-127" y="8">
+			<name x="-137" y="-26">end</name>
+			<urgent/>
+		</location>
+		<location id="id26" x="-204" y="-34">
+			<name x="-246" y="-51">idle</name>
+		</location>
+		<location id="id27" x="-25" y="8">
+			<name x="-8" y="0">msgsend</name>
+			<urgent/>
+		</location>
+		<location id="id28" x="-25" y="-93">
+			<name x="-8" y="-102">compute</name>
+			<label kind="invariant" x="-8" y="-85">local_clock&lt;=5</label>
+		</location>
+		<location id="id29" x="-127" y="-93">
+			<name x="-170" y="-127">msgaccept</name>
+			<urgent/>
+		</location>
+		<location id="id30" x="-246" y="17">
+			<name x="-331" y="8">imuaccpet</name>
+			<urgent/>
+		</location>
+		<location id="id31" x="-246" y="68">
+		</location>
+		<location id="id32" x="-127" y="68">
+		</location>
+		<init ref="id26"/>
+		<transition>
+			<source ref="id32"/>
+			<target ref="id25"/>
+		</transition>
+		<transition>
+			<source ref="id31"/>
+			<target ref="id32"/>
+		</transition>
+		<transition>
+			<source ref="id30"/>
+			<target ref="id31"/>
+		</transition>
+		<transition>
+			<source ref="id26"/>
+			<target ref="id30"/>
+			<label kind="synchronisation" x="-340" y="-25">fromimutomaster?</label>
+		</transition>
+		<transition>
+			<source ref="id25"/>
+			<target ref="id26"/>
+			<label kind="synchronisation" x="-178" y="-42">sendcpumsg!</label>
+		</transition>
+		<transition>
+			<source ref="id27"/>
+			<target ref="id25"/>
+			<label kind="synchronisation" x="-110" y="17">fromcputowheel!</label>
+		</transition>
+		<transition>
+			<source ref="id28"/>
+			<target ref="id27"/>
+			<label kind="synchronisation" x="-17" y="-51">fromcpu!</label>
+		</transition>
+		<transition>
+			<source ref="id29"/>
+			<target ref="id28"/>
+		</transition>
+		<transition>
+			<source ref="id26"/>
+			<target ref="id29"/>
+			<label kind="synchronisation" x="-289" y="-93">fromhandletomaster?</label>
+		</transition>
+	</template>
+	<template>
+		<name>mastercarwheel</name>
+		<location id="id33" x="0" y="0">
+		</location>
+		<init ref="id33"/>
+	</template>
+	<template>
+		<name>distance</name>
+		<location id="id34" x="0" y="0">
+		</location>
+		<init ref="id34"/>
+	</template>
+	<template>
+		<name>imumaster</name>
+		<location id="id35" x="0" y="0">
+		</location>
+		<init ref="id35"/>
+	</template>
+	<template>
+		<name>imuslave</name>
+		<location id="id36" x="0" y="0">
+		</location>
+		<init ref="id36"/>
+	</template>
+	<system>// Place template instantiations here.
+hard = handle();
+task = handletask();
+port = fromtohandleport();
+// List one or more processes to be composed into a system.
+system hard,task,port;
+    </system>
+	<queries>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>

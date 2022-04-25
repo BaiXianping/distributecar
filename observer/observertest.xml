@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+chan dispatch, threadBover, threadBstart, threadAover, threadAstart;</declaration>
+	<template>
+		<name>AbsenceAAfterBwithinI</name>
+		<parameter>double dmin,double dmax</parameter>
+		<declaration>clock local_clock;</declaration>
+		<location id="id0" x="-1589" y="-1394">
+		</location>
+		<location id="id1" x="-1470" y="-1394">
+			<name x="-1480" y="-1428">S0</name>
+		</location>
+		<location id="id2" x="-1350" y="-1394">
+			<name x="-1334" y="-1402">ERROR</name>
+		</location>
+		<location id="id3" x="-1470" y="-1300">
+			<name x="-1479" y="-1283">OK</name>
+		</location>
+		<init ref="id0"/>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-1581" y="-1368">threadBover?</label>
+			<label kind="assignment" x="-1589" y="-1351">local_clock:=0</label>
+			<nail x="-1496" y="-1351"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-1445" y="-1360">local_clock&gt;dmax</label>
+			<nail x="-1445" y="-1351"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-1453" y="-1428">local_clock&gt;=dmin&amp;&amp;local_clock&lt;=dmax</label>
+			<label kind="synchronisation" x="-1453" y="-1411">threadAstart?</label>
+			<nail x="-1411" y="-1394"/>
+		</transition>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-1572" y="-1411">threadBover?</label>
+		</transition>
+	</template>
+	<template>
+		<name>Scheduler</name>
+		<declaration>clock t;
+double period;</declaration>
+		<location id="id4" x="-1173" y="-340">
+		</location>
+		<location id="id5" x="-1062" y="-340">
+			<name x="-1070" y="-306">wait</name>
+			<label kind="invariant" x="-1072" y="-323">t&lt;=period</label>
+		</location>
+		<init ref="id4"/>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-1095" y="-433">t&gt;=period</label>
+			<label kind="synchronisation" x="-1096" y="-416">dispatch!</label>
+			<label kind="assignment" x="-1027" y="-408">t:=0</label>
+			<nail x="-1079" y="-391"/>
+			<nail x="-1028" y="-391"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id5"/>
+			<label kind="synchronisation" x="-1156" y="-357">dispatch!</label>
+			<label kind="assignment" x="-1148" y="-340">t:=0</label>
+			<nail x="-1080" y="-340"/>
+			<nail x="-1080" y="-340"/>
+		</transition>
+	</template>
+	<template>
+		<name>ThreadB</name>
+		<parameter>double let</parameter>
+		<declaration>clock local_clock;</declaration>
+		<location id="id6" x="-807" y="-51">
+			<name x="-816" y="-85">let_tti</name>
+			<label kind="invariant" x="-816" y="-34">local_clock&lt;=0</label>
+			<urgent/>
+		</location>
+		<location id="id7" x="-807" y="-178">
+			<name x="-816" y="-212">let_tto</name>
+			<label kind="invariant" x="-824" y="-170">local_clock&lt;=let</label>
+			<urgent/>
+		</location>
+		<location id="id8" x="-688" y="-51">
+			<name x="-697" y="-85">wait_to_compute</name>
+			<label kind="invariant" x="-697" y="-34">local_clock&lt;let</label>
+		</location>
+		<location id="id9" x="-688" y="-178">
+			<name x="-697" y="-212">finish_computing</name>
+			<label kind="invariant" x="-697" y="-161">local_clock&lt;=let</label>
+		</location>
+		<location id="id10" x="-552" y="-51">
+			<name x="-561" y="-85">let_compute_start</name>
+			<label kind="invariant" x="-561" y="-34">local_clock&lt;let</label>
+		</location>
+		<location id="id11" x="-552" y="-178">
+			<name x="-561" y="-212">let_compute_end</name>
+			<label kind="invariant" x="-561" y="-161">local_clock&lt;let</label>
+		</location>
+		<init ref="id6"/>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="synchronisation" x="-807" y="-119">dispatch?</label>
+			<label kind="assignment" x="-807" y="-136">local_clock:=0</label>
+		</transition>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-790" y="-195">threadBover!</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id9"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id11"/>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id10"/>
+		</transition>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id8"/>
+			<label kind="synchronisation" x="-816" y="-17">threadBstart!</label>
+		</transition>
+	</template>
+	<template>
+		<name>ThreadA</name>
+		<parameter>double let</parameter>
+		<declaration>clock local_clock;</declaration>
+		<location id="id12" x="-952" y="-561">
+			<name x="-962" y="-595">let_tti</name>
+			<label kind="invariant" x="-960" y="-552">local_clock&lt;=0</label>
+			<urgent/>
+		</location>
+		<location id="id13" x="-952" y="-688">
+			<name x="-962" y="-722">let_tto</name>
+			<label kind="invariant" x="-969" y="-679">local_clock&lt;=let</label>
+			<urgent/>
+		</location>
+		<location id="id14" x="-833" y="-561">
+			<name x="-843" y="-595">wait_to_compute</name>
+			<label kind="invariant" x="-843" y="-544">local_clock&lt;let</label>
+		</location>
+		<location id="id15" x="-833" y="-688">
+			<name x="-843" y="-722">finish_computing</name>
+			<label kind="invariant" x="-850" y="-679">local_clock&lt;=let</label>
+		</location>
+		<location id="id16" x="-697" y="-561">
+			<name x="-707" y="-595">let_compute_start</name>
+			<label kind="invariant" x="-705" y="-543">local_clock&lt;let</label>
+		</location>
+		<location id="id17" x="-697" y="-688">
+			<name x="-707" y="-722">let_compute_end</name>
+			<label kind="invariant" x="-688" y="-679">local_clock&lt;let</label>
+		</location>
+		<location id="id18" x="-1045" y="-629">
+			<urgent/>
+		</location>
+		<init ref="id18"/>
+		<transition>
+			<source ref="id18"/>
+			<target ref="id12"/>
+			<label kind="synchronisation" x="-1062" y="-603">dispatch?</label>
+			<label kind="assignment" x="-1071" y="-586">local_clock:=0</label>
+		</transition>
+		<transition>
+			<source ref="id13"/>
+			<target ref="id18"/>
+			<label kind="synchronisation" x="-1071" y="-680">threadAover!</label>
+		</transition>
+		<transition>
+			<source ref="id15"/>
+			<target ref="id13"/>
+		</transition>
+		<transition>
+			<source ref="id17"/>
+			<target ref="id15"/>
+		</transition>
+		<transition>
+			<source ref="id16"/>
+			<target ref="id17"/>
+		</transition>
+		<transition>
+			<source ref="id14"/>
+			<target ref="id16"/>
+		</transition>
+		<transition>
+			<source ref="id12"/>
+			<target ref="id14"/>
+			<label kind="synchronisation" x="-960" y="-535">threadAstart!</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+a=ThreadA(5);
+b=ThreadB(5);
+s=Scheduler();
+observer=AbsenceAAfterBwithinI(5,10);
+// List one or more processes to be composed into a system.
+//system ThreadA,ThreadB,observer;
+system a,b,s,observer;</system>
+	<queries>
+		<query>
+			<formula></formula>
+			<comment></comment>
+		</query>
+	</queries>
+</nta>
